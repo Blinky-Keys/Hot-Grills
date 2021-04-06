@@ -77,12 +77,28 @@ public class GameControllerFinal : MonoBehaviour
         //Add functions for each of the controls
         if(Input.GetKeyDown(KeyCode.P))
         {
-            if(grillPatties >= 9)
+            if(currentView == "grills")
             {
-                return;
+                if (grillPatties >= 9)
+                {
+                    return;
+                }
+                pattiesArr[grillPatties] = Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
+                grillPatties++;
             }
-            pattiesArr[grillPatties] = Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
-            grillPatties++;
+            else if(currentView == "stacking")
+            {
+                //Place down cooked patty on the grill
+                for (int i = 0; i < burgers.Length; i++)
+                {
+                    if (burgers[i][0] != null)
+                    {
+                        PlaceIngredient(burgers[i], patty);
+                        break;
+                    }
+                }
+            }
+            
             
         }
         if(Input.GetKeyDown(KeyCode.F))
@@ -120,10 +136,6 @@ public class GameControllerFinal : MonoBehaviour
             }
             
         }
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            //Place down cooked patty on the grill
-        }
         if(Input.GetKeyDown(KeyCode.A))
         {
             //Move the camera back to the grills view
@@ -160,6 +172,18 @@ public class GameControllerFinal : MonoBehaviour
                 camera.transform.position = grills;
                 currentView = "grills";
                 break;
+        }
+    }
+
+    void PlaceIngredient(GameObject[] burgerArr, GameObject ingredient)
+    {
+        for(int i = 0; i < burgerArr.Length; i++)
+        {
+            if(burgerArr[i] == null)
+            {
+                burgerArr[i] = Instantiate(ingredient, burgerArr[0].transform.position, Quaternion.identity);
+                return;
+            }
         }
     }
 }
