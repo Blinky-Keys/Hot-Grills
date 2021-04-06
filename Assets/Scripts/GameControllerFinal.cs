@@ -83,9 +83,9 @@ public class GameControllerFinal : MonoBehaviour
             {
                 //Move patty off the patty
                 Destroy(pattiesArr[grillPatties - 1]);
+                cooked[grillPatties - 1] = false;
                 grillPatties--;
                 cookedPatties++;
-                cooked[grillPatties - 1] = false;
             }
         }
         if(Input.GetKeyDown(KeyCode.B))
