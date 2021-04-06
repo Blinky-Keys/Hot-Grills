@@ -15,13 +15,29 @@ public class GameControllerFinal : MonoBehaviour
     Vector3 grills = new Vector3(0f, -0.52f, -10f);
     Vector3 stacking = new Vector3(25.24f, -0.52f, -10f);
 
+    //Patties on the grill
+    int grillPatties = 0;
+
+    //Patty positions
+    Vector2[] pattyPos;
+
     //Import assets that are going to be created whena burger is being made
     public GameObject patty;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        pattyPos = new Vector2[] {
+            new Vector2(2, 0),
+            new Vector2(2, -2),
+            new Vector2(2, -4),
+            new Vector2(0, 0),
+            new Vector2(0, -2),
+            new Vector2(0, -4),
+            new Vector2(-2, 0),
+            new Vector2(-2, -2),
+            new Vector2(-2, -4)
+        };
     }
 
     // Update is called once per frame
@@ -30,10 +46,13 @@ public class GameControllerFinal : MonoBehaviour
         //Add functions for each of the controls
         if(Input.GetKeyDown(KeyCode.P))
         {
-            //Spawn in a new uncooked patty
-            Instantiate(patty, new Vector3(2, 0), Quaternion.identity);
-            Instantiate(patty, new Vector3(2, -2), Quaternion.identity);
-            Instantiate(patty, new Vector3(2, -4), Quaternion.identity);
+            if(grillPatties >= 9)
+            {
+                return;
+            }
+            Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
+            grillPatties++;
+            
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
