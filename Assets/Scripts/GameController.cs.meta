@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 2f5cd2d56a2027544aac6ef12a31467e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - patty: {fileID: 7940415526024101953, guid: 4c4dddcecac0ea242bdc5d5342b662a3, type: 3}
+  - cooked_patty: {fileID: 5824329286544619945, guid: 3732b49ebcdafda44ae6d8b1553981c1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
