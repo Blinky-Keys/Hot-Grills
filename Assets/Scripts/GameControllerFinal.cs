@@ -23,12 +23,17 @@ public class GameControllerFinal : MonoBehaviour
     //Patty positions
     Vector2[] pattyPos;
 
-    //Cookie patties
+    //Cooked patties
     int cookedPatties = 0;
+
+    //Burgers being assembled
+    Vector2[] bunPos;
+    GameObject[][] burgers;
 
     //Import assets that are going to be created whena burger is being made
     public GameObject patty;
     public GameObject cookedPatty;
+    public GameObject bun;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +50,25 @@ public class GameControllerFinal : MonoBehaviour
             new Vector2(-2, -4)
         };
 
+        bunPos = new Vector2[]
+        {
+            new Vector2(16f, -4.5f),
+            new Vector2(19f, -4.5f),
+            new Vector2(22f, -4.5f),
+            new Vector2(25f, -4.5f),
+            new Vector2(28f, -4.5f),
+            new Vector2(31f, -4.5f),
+            new Vector2(34f, -4.5f)
+        };
+
         pattiesArr = new GameObject[9];
         cooked = new bool[9];
+
+        burgers = new GameObject[7][];
+        for(int i = 0; i < burgers.Length; i++)
+        {
+            burgers[i] = new GameObject[7];
+        }
     }
 
     // Update is called once per frame
@@ -69,19 +91,16 @@ public class GameControllerFinal : MonoBehaviour
             if(grillPatties > 0)
             {
 
-
                 Destroy(pattiesArr[grillPatties-1]);
                 pattiesArr[grillPatties-1] = Instantiate(cookedPatty, pattyPos[grillPatties-1], Quaternion.identity);
-                cooked[grillPatties - 1] = true;
-                
-                
+                cooked[grillPatties - 1] = true;                
             }
         }
         if(Input.GetKeyDown(KeyCode.M))
         {
             if(grillPatties > 0 && cooked[grillPatties-1])
             {
-                //Move patty off the patty
+                //Move patty off the grill
                 Destroy(pattiesArr[grillPatties - 1]);
                 cooked[grillPatties - 1] = false;
                 grillPatties--;
@@ -91,6 +110,15 @@ public class GameControllerFinal : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.B))
         {
             //Place down bottom bun
+            for(int i = 0; i < burgers.Length; i++)
+            {
+                if(burgers[i][0] == null)
+                {
+                    burgers[i][0] = Instantiate(bun, bunPos[i], Quaternion.identity);
+                    break;
+                }
+            }
+            
         }
         if(Input.GetKeyDown(KeyCode.P))
         {
@@ -109,6 +137,14 @@ public class GameControllerFinal : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
             //Clear all ingredients on the chopping board
+            for(int i = 0; i < burgers.Length; i++)
+            {
+                for(int j = 0; j < burgers[i].Length; j++)
+                {
+                    Destroy(burgers[i][j]);
+                    burgers[i][j] = null;
+                }
+            }
         }
     }
 

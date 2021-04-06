@@ -337,7 +337,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.089177
+  orthographic size: 4.9445496
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -587,6 +587,7 @@ GameObject:
   - component: {fileID: 1331315638}
   - component: {fileID: 1331315637}
   - component: {fileID: 1331315639}
+  - component: {fileID: 1331315640}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -639,7 +640,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331315636}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75e68aa1f0bc42541a46b5c2cabe7503, type: 3}
   m_Name: 
@@ -655,6 +656,23 @@ MonoBehaviour:
   salad: {fileID: 4018034329619769590, guid: 800269580aa2c874c9f40f03d4dcecf3, type: 3}
   sauce: {fileID: 3846416395540977183, guid: 06ab87837cb9d734c876d17fe3e6ecc0, type: 3}
   top_bun: {fileID: 3518132360825630825, guid: 1b28343a61fab9e4cbd343d46a15664f, type: 3}
+--- !u!114 &1331315640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331315636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52408603504cfa84284732815756eef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 519420028}
+  text: {fileID: 0}
+  patty: {fileID: 7940415526024101953, guid: 4c4dddcecac0ea242bdc5d5342b662a3, type: 3}
+  cookedPatty: {fileID: 5824329286544619945, guid: 3732b49ebcdafda44ae6d8b1553981c1, type: 3}
+  bun: {fileID: 1060922845263278054, guid: 9331c9dac4085aa45932dccb37b9e46a, type: 3}
 --- !u!1 &1798401807
 GameObject:
   m_ObjectHideFlags: 0
