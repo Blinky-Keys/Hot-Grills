@@ -17,12 +17,18 @@ public class GameControllerFinal : MonoBehaviour
 
     //Patties on the grill
     int grillPatties = 0;
+    GameObject[] pattiesArr;
+    bool[] cooked;
 
     //Patty positions
     Vector2[] pattyPos;
 
+    //Cookie patties
+    int cookedPatties = 0;
+
     //Import assets that are going to be created whena burger is being made
     public GameObject patty;
+    public GameObject cookedPatty;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +44,9 @@ public class GameControllerFinal : MonoBehaviour
             new Vector2(-2, -2),
             new Vector2(-2, -4)
         };
+
+        pattiesArr = new GameObject[9];
+        cooked = new bool[9];
     }
 
     // Update is called once per frame
@@ -50,17 +59,34 @@ public class GameControllerFinal : MonoBehaviour
             {
                 return;
             }
-            Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
+            pattiesArr[grillPatties] = Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
             grillPatties++;
             
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
             //Flip uncooked patty
+            if(grillPatties > 0)
+            {
+
+
+                Destroy(pattiesArr[grillPatties-1]);
+                pattiesArr[grillPatties-1] = Instantiate(cookedPatty, pattyPos[grillPatties-1], Quaternion.identity);
+                cooked[grillPatties - 1] = true;
+                
+                
+            }
         }
         if(Input.GetKeyDown(KeyCode.M))
         {
-            //Move patty off the patty
+            if(grillPatties > 0 && cooked[grillPatties-1])
+            {
+                //Move patty off the patty
+                Destroy(pattiesArr[grillPatties - 1]);
+                grillPatties--;
+                cookedPatties++;
+                cooked[grillPatties - 1] = false;
+            }
         }
         if(Input.GetKeyDown(KeyCode.B))
         {
