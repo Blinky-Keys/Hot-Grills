@@ -34,6 +34,7 @@ public class GameControllerFinal : MonoBehaviour
     public GameObject patty;
     public GameObject cookedPatty;
     public GameObject bun;
+    public GameObject patty_side;
 
     // Start is called before the first frame update
     void Start()
@@ -91,15 +92,14 @@ public class GameControllerFinal : MonoBehaviour
                 //Place down cooked patty on the grill
                 for (int i = 0; i < burgers.Length; i++)
                 {
-                    if (burgers[i][0] != null)
+                    //Check that there is a bottom bun
+                    if (burgers[i][0] != null && burgers[i][6] == null)
                     {
-                        PlaceIngredient(burgers[i], patty);
+                        PlaceIngredient(burgers[i], patty_side);
                         break;
                     }
                 }
-            }
-            
-            
+            }  
         }
         if(Input.GetKeyDown(KeyCode.F))
         {
@@ -134,7 +134,6 @@ public class GameControllerFinal : MonoBehaviour
                     break;
                 }
             }
-            
         }
         if(Input.GetKeyDown(KeyCode.A))
         {
