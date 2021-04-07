@@ -254,7 +254,7 @@ public class GameControllerFinal : MonoBehaviour
         {
             for(int i = 0; i < burgers.Length; i++)
             {
-                if (burgers[i][0] != null && burgers[i][5] != null)
+                if (burgers[i][0] != null && burgers[i][5] != null && burgers[i][6] == null)
                 {
                     PlaceIngredient(burgers[i], topBun);
                     break;
