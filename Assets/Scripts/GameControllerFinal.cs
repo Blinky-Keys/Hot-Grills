@@ -114,14 +114,29 @@ public class GameControllerFinal : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.F))
         {
-            //Flip uncooked patty
-            if(grillPatties > 0)
+            if(currentView == "grills")
             {
+                //Flip uncooked patty
+                if (grillPatties > 0)
+                {
 
-                Destroy(pattiesArr[grillPatties-1]);
-                pattiesArr[grillPatties-1] = Instantiate(cookedPatty, pattyPos[grillPatties-1], Quaternion.identity);
-                cooked[grillPatties - 1] = true;                
+                    Destroy(pattiesArr[grillPatties - 1]);
+                    pattiesArr[grillPatties - 1] = Instantiate(cookedPatty, pattyPos[grillPatties - 1], Quaternion.identity);
+                    cooked[grillPatties - 1] = true;
+                }
             }
+            else if(currentView == "stacking")
+            {
+                for(int i = 0; i < burgers.Length; i++)
+                {
+                    if(burgers[i][0] != null && burgers[i][5] == null)
+                    {
+                        PlaceIngredient(burgers[i], sauce);
+                        break;
+                    }
+                }
+            }
+            
         }
 
         if(Input.GetKeyDown(KeyCode.M))
