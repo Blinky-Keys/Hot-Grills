@@ -31,7 +31,7 @@ public class GameControllerFinal : MonoBehaviour
     GameObject[][] burgers;
 
     //Position offset for stacking burger ingredients
-    float offset = 0.07f;
+    float offset = 0.15f;
 
     //Ingredient sorting order
     int sortingOrder = 10;
@@ -237,6 +237,18 @@ public class GameControllerFinal : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            for(int i = 0; i < burgers.Length; i++)
+            {
+                if (burgers[i][0] != null && burgers[i][5] != null)
+                {
+                    PlaceIngredient(burgers[i], topBun);
+                    break;
+                }
+            }
+        }
     }
 
     void changeCamera(string view)
@@ -260,9 +272,10 @@ public class GameControllerFinal : MonoBehaviour
         {
             if(burgerArr[i] == null)
             {
-                burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + (offset*i)), Quaternion.identity);
+                burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + offset), Quaternion.identity);
                 burgerArr[i].GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
                 sortingOrder++;
+                //Debug.Log("X: " + burgerArr[0].transform.position.x + " Y: " + burgerArr[i-1].transform.position.y + (offset*i));
                 return;
             }
         }
