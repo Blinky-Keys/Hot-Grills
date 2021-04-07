@@ -30,14 +30,22 @@ public class GameControllerFinal : MonoBehaviour
     Vector2[] bunPos;
     GameObject[][] burgers;
 
-    //Position offset for stacking burgers
-    float offset = 0.05f;
+    //Position offset for stacking burger ingredients
+    float offset = 0.07f;
+
+    //Ingredient sorting order
+    int sortingOrder = 10;
 
     //Import assets that are going to be created whena burger is being made
     public GameObject patty;
     public GameObject cookedPatty;
     public GameObject bun;
     public GameObject patty_side;
+    public GameObject salad;
+    public GameObject cheese;
+    public GameObject sauce;
+    public GameObject topBun;
+    public GameObject bacon;
 
     // Start is called before the first frame update
     void Start()
@@ -56,13 +64,13 @@ public class GameControllerFinal : MonoBehaviour
 
         bunPos = new Vector2[]
         {
-            new Vector2(16f, -4.5f),
-            new Vector2(19f, -4.5f),
-            new Vector2(22f, -4.5f),
-            new Vector2(25f, -4.5f),
-            new Vector2(28f, -4.5f),
-            new Vector2(31f, -4.5f),
-            new Vector2(34f, -4.5f)
+            new Vector2(16f, -4.6f),
+            new Vector2(19f, -4.6f),
+            new Vector2(22f, -4.6f),
+            new Vector2(25f, -4.6f),
+            new Vector2(28f, -4.6f),
+            new Vector2(31f, -4.6f),
+            new Vector2(34f, -4.6f)
         };
 
         pattiesArr = new GameObject[9];
@@ -92,11 +100,10 @@ public class GameControllerFinal : MonoBehaviour
             }
             else if(currentView == "stacking")
             {
-                //Place down cooked patty on the grill
                 for (int i = 0; i < burgers.Length; i++)
                 {
                     //Check that there is a bottom bun
-                    if (burgers[i][0] != null && burgers[i][6] == null)
+                    if (burgers[i][0] != null && burgers[i][5] == null)
                     {
                         PlaceIngredient(burgers[i], patty_side);
                         break;
@@ -104,6 +111,7 @@ public class GameControllerFinal : MonoBehaviour
                 }
             }  
         }
+
         if(Input.GetKeyDown(KeyCode.F))
         {
             //Flip uncooked patty
@@ -115,6 +123,7 @@ public class GameControllerFinal : MonoBehaviour
                 cooked[grillPatties - 1] = true;                
             }
         }
+
         if(Input.GetKeyDown(KeyCode.M))
         {
             if(grillPatties > 0 && cooked[grillPatties-1])
@@ -126,6 +135,7 @@ public class GameControllerFinal : MonoBehaviour
                 cookedPatties++;
             }
         }
+
         if(Input.GetKeyDown(KeyCode.B))
         {
             //Place down bottom bun
@@ -138,16 +148,68 @@ public class GameControllerFinal : MonoBehaviour
                 }
             }
         }
+
         if(Input.GetKeyDown(KeyCode.A))
         {
             //Move the camera back to the grills view
             changeCamera(currentView);
         }
+
         if(Input.GetKeyDown(KeyCode.D))
         {
             //Move the camera to the stacking view
             changeCamera(currentView);
         }
+
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            if(currentView == "stacking")
+            {
+                //Place down a salad on burger
+                for (int i = 0; i < burgers.Length; i++)
+                {
+                    //Check that there is a bottom bun
+                    if (burgers[i][0] != null && burgers[i][5] == null)
+                    {
+                        PlaceIngredient(burgers[i], salad);
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            if(currentView == "stacking")
+            {
+                //Place cheese down on burger
+                for(int i = 0; i < burgers.Length; i++)
+                {
+                    if (burgers[i][0] != null && burgers[i][5] == null)
+                    {
+                        PlaceIngredient(burgers[i], cheese);
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(currentView == "stacking")
+            {
+                //Place bacon down on burger
+                for(int i = 0; i < burgers.Length; i++)
+                {
+                    if(burgers[i][0] != null && burgers[i][5] == null)
+                    {
+                        PlaceIngredient(burgers[i], bacon);
+                        break;
+                    }
+                }
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
             //Clear all ingredients on the chopping board
@@ -184,6 +246,8 @@ public class GameControllerFinal : MonoBehaviour
             if(burgerArr[i] == null)
             {
                 burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + (offset*i)), Quaternion.identity);
+                burgerArr[i].GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
+                sortingOrder++;
                 return;
             }
         }
