@@ -87,6 +87,8 @@ public class GameControllerFinal : MonoBehaviour
     void Update()
     {
         //Add functions for each of the controls
+
+        //Player presses P key
         if(Input.GetKeyDown(KeyCode.P))
         {
             if(currentView == "grills")
@@ -112,6 +114,7 @@ public class GameControllerFinal : MonoBehaviour
             }  
         }
 
+        //Player presses F key
         if(Input.GetKeyDown(KeyCode.F))
         {
             if(currentView == "grills")
@@ -139,6 +142,7 @@ public class GameControllerFinal : MonoBehaviour
             
         }
 
+        //Player presses M key
         if(Input.GetKeyDown(KeyCode.M))
         {
             if(grillPatties > 0 && cooked[grillPatties-1])
@@ -151,6 +155,7 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        //Player presses B key
         if(Input.GetKeyDown(KeyCode.B))
         {
             //Place down bottom bun
@@ -164,18 +169,21 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        //Player presses A key
         if(Input.GetKeyDown(KeyCode.A))
         {
             //Move the camera back to the grills view
             changeCamera(currentView);
         }
 
+        //Player presses D key
         if(Input.GetKeyDown(KeyCode.D))
         {
             //Move the camera to the stacking view
             changeCamera(currentView);
         }
 
+        //Player presses S key
         if(Input.GetKeyDown(KeyCode.S))
         {
             if(currentView == "stacking")
@@ -193,6 +201,7 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        //Player presses C key
         if(Input.GetKeyDown(KeyCode.C))
         {
             if(currentView == "stacking")
@@ -209,6 +218,7 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        //Player presses R key
         if(Input.GetKeyDown(KeyCode.R))
         {
             if(currentView == "stacking")
@@ -225,6 +235,7 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        //Player presses backspace key
         if(Input.GetKeyDown(KeyCode.Backspace))
         {
             //Clear all ingredients on the chopping board
@@ -238,6 +249,7 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        //Player presses spacebar
         if(Input.GetKeyDown(KeyCode.Space))
         {
             for(int i = 0; i < burgers.Length; i++)
@@ -251,6 +263,7 @@ public class GameControllerFinal : MonoBehaviour
         }
     }
 
+    //Function for changing the position of the camera
     void changeCamera(string view)
     {
         switch(view)
@@ -266,6 +279,7 @@ public class GameControllerFinal : MonoBehaviour
         }
     }
 
+    //General purpose function for placing ingredient on burger in the stacking view
     void PlaceIngredient(GameObject[] burgerArr, GameObject ingredient)
     {
         for(int i = 0; i < burgerArr.Length; i++)
