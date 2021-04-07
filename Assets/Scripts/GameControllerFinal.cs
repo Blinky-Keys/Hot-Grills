@@ -30,6 +30,9 @@ public class GameControllerFinal : MonoBehaviour
     Vector2[] bunPos;
     GameObject[][] burgers;
 
+    //Position offset for stacking burgers
+    float offset = 0.05f;
+
     //Import assets that are going to be created whena burger is being made
     public GameObject patty;
     public GameObject cookedPatty;
@@ -180,7 +183,7 @@ public class GameControllerFinal : MonoBehaviour
         {
             if(burgerArr[i] == null)
             {
-                burgerArr[i] = Instantiate(ingredient, burgerArr[0].transform.position, Quaternion.identity);
+                burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + (offset*i)), Quaternion.identity);
                 return;
             }
         }
