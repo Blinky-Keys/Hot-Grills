@@ -670,10 +670,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 519420028}
   text: {fileID: 0}
-  patty: {fileID: 4928621203778907234, guid: e1450a683809c5142ad800dc1f822af4, type: 3}
+  patty: {fileID: 7940415526024101953, guid: 4c4dddcecac0ea242bdc5d5342b662a3, type: 3}
   cookedPatty: {fileID: 5824329286544619945, guid: 3732b49ebcdafda44ae6d8b1553981c1, type: 3}
   bun: {fileID: 1060922845263278054, guid: 9331c9dac4085aa45932dccb37b9e46a, type: 3}
-  patty_side: {fileID: 9142375478910076995, guid: 7bd2aeabee4a3924bbab26e3277cf7ed, type: 3}
+  patty_side: {fileID: 4928621203778907234, guid: e1450a683809c5142ad800dc1f822af4, type: 3}
   salad: {fileID: 4018034329619769590, guid: 800269580aa2c874c9f40f03d4dcecf3, type: 3}
   cheese: {fileID: 8908295213971258225, guid: 7b45021b20873494ca3bdc7f38f9dc67, type: 3}
   sauce: {fileID: 3846416395540977183, guid: 06ab87837cb9d734c876d17fe3e6ecc0, type: 3}

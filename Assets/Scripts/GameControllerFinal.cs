@@ -282,6 +282,8 @@ public class GameControllerFinal : MonoBehaviour
     //General purpose function for placing ingredient on burger in the stacking view
     void PlaceIngredient(GameObject[] burgerArr, GameObject ingredient)
     {
+        Debug.Log("Called PlaceIngredient()");
+
         for(int i = 0; i < burgerArr.Length; i++)
         {
             if(burgerArr[i] == null)
