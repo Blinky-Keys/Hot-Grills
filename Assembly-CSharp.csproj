@@ -52,12 +52,13 @@
     <UnityVersion>2020.1.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameControllerV3.cs" />
-    <Compile Include="Assets\Scripts\GameController.cs" />
-    <Compile Include="Assets\Scripts\Patty.cs" />
-    <Compile Include="Assets\Scripts\GameController V4.cs" />
-    <Compile Include="Assets\Scripts\OrderGenerator.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\GameControllerV3.cs" />
     <Compile Include="Assets\Scripts\GameControllerFinal.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\GameController.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\Patty.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\GameController V4.cs" />
+    <Compile Include="Assets\Scripts\OrderGenerator.cs" />
+    <Compile Include="Assets\Scripts\patty.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -120,7 +120,7 @@ public class GameControllerFinal : MonoBehaviour
             if(currentView == "grills")
             {
                 //Flip uncooked patty
-                if (grillPatties > 0)
+                if (grillPatties > 0 && pattiesArr[grillPatties-1].tag == "ready2flip")
                 {
 
                     Destroy(pattiesArr[grillPatties - 1]);

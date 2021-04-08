@@ -2,32 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patty : MonoBehaviour
+public class patty : MonoBehaviour
 {
-    public GameObject cookedPatty;
-    private bool flipped;
+    private float initTime;
+    private float timeSinceInit;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        flipped = false;
+        initTime = Time.timeSinceLevelLoad;
     }
 
-    void flip()
+    // Update is called once per frame
+    void Update()
     {
-        flipped = true;
-        Instantiate(cookedPatty, this.transform.position, Quaternion.identity);
-        Destroy(this);
-    }
+        timeSinceInit = Time.timeSinceLevelLoad - initTime;
+        Debug.Log(timeSinceInit);
 
-    public bool isFlipped()
-    {
-        if(flipped)
+        //Once 10 seconds has passed, change the object tag to show patty is ready to flip
+        if(timeSinceInit > 10)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            this.tag = "ready2flip";
         }
     }
 }

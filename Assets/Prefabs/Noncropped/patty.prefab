@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5477042548706020466}
   - component: {fileID: 1238560867870060835}
   - component: {fileID: 5641834962312865904}
+  - component: {fileID: 3069219250037528911}
   m_Layer: 0
   m_Name: patty
   m_TagString: Untagged
@@ -96,3 +97,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookedPatty: {fileID: 5824329286544619945, guid: 3732b49ebcdafda44ae6d8b1553981c1, type: 3}
+--- !u!114 &3069219250037528911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940415526024101953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf2ae3dc1bf4c746b9465aa1f26c248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
