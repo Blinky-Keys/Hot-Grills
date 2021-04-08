@@ -254,9 +254,11 @@ public class GameControllerFinal : MonoBehaviour
         {
             for(int i = 0; i < burgers.Length; i++)
             {
+                //Place a top bun on the burger
                 if (burgers[i][0] != null && burgers[i][5] != null && burgers[i][6] == null)
                 {
                     PlaceIngredient(burgers[i], topBun);
+                    ServeBurger(burgers[i]);
                     break;
                 }
             }
@@ -294,6 +296,18 @@ public class GameControllerFinal : MonoBehaviour
                 //Debug.Log("X: " + burgerArr[0].transform.position.x + " Y: " + burgerArr[i-1].transform.position.y + (offset*i));
                 return;
             }
+        }
+    }
+
+    void ServeBurger(GameObject[] burger)
+    {
+        //Move all of the game objects upwards by a set amount to place the burger on the order window
+        //(Add 4.6 to each objects Y component
+        for(int i = 0; i < burger.Length; i++)
+        {
+            Vector2 temp = burger[i].transform.position;
+            temp.y += 4.6f;
+            burger[i].transform.position = temp;
         }
     }
 }
