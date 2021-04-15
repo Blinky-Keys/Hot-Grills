@@ -119,10 +119,15 @@ public class GameControllerFinal : MonoBehaviour
         {
             if(currentView == "grills")
             {
-                //Flip uncooked patty
+                //CHANGE BELOW
+                //Check if there are any patties on the grill
+                //Loop through and check which ones are tagged as ready to flip
+                //Flip first patty that is ready to be flipped
+
+
+                //Check if there are any patties on the grill and whether the latest one is ready to be flipped
                 if (grillPatties > 0 && pattiesArr[grillPatties-1].tag == "ready2flip")
                 {
-
                     Destroy(pattiesArr[grillPatties - 1]);
                     pattiesArr[grillPatties - 1] = Instantiate(cookedPatty, pattyPos[grillPatties - 1], Quaternion.identity);
                     cooked[grillPatties - 1] = true;
@@ -139,7 +144,6 @@ public class GameControllerFinal : MonoBehaviour
                     }
                 }
             }
-            
         }
 
         //Player presses M key
@@ -309,5 +313,7 @@ public class GameControllerFinal : MonoBehaviour
             temp.y += 4.6f;
             burger[i].transform.position = temp;
         }
+
+        //After delay, destroy all game objects to simulate burger being taken
     }
 }
