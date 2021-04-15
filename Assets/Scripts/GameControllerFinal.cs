@@ -6,12 +6,14 @@ using UnityEngine;
 
 public class GameControllerFinal : MonoBehaviour
 {
-    //Camera
+    //Camera and text objects
     public GameObject camera;
     public Text text;
 
-    //Camera positions
+    //View that the player is currently seeing
     string currentView = "grills";
+
+    //Camera positions for the two different views
     Vector3 grills = new Vector3(0f, -0.52f, -10f);
     Vector3 stacking = new Vector3(25.24f, -0.52f, -10f);
 
@@ -30,7 +32,7 @@ public class GameControllerFinal : MonoBehaviour
     Vector2[] bunPos;
     GameObject[][] burgers;
 
-    //Position offset for stacking burger ingredients
+    //Position offset from previous ingredient (for stacking burger ingredients)
     float offset = 0.15f;
 
     //Ingredient sorting order
@@ -50,6 +52,7 @@ public class GameControllerFinal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Positions in 2D space where patties will be created
         pattyPos = new Vector2[] {
             new Vector2(2, 0),
             new Vector2(2, -2),
@@ -62,6 +65,7 @@ public class GameControllerFinal : MonoBehaviour
             new Vector2(-2, -4)
         };
 
+        //Positions in 2D space where buns will be rendered
         bunPos = new Vector2[]
         {
             new Vector2(16f, -4.6f),
@@ -73,6 +77,7 @@ public class GameControllerFinal : MonoBehaviour
             new Vector2(34f, -4.6f)
         };
 
+        //Initialising arrays to be entirely empty
         pattiesArr = new GameObject[9];
         cooked = new bool[9];
 
@@ -86,7 +91,6 @@ public class GameControllerFinal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Add functions for each of the controls
 
         //Player presses P key
         if(Input.GetKeyDown(KeyCode.P))
@@ -123,6 +127,7 @@ public class GameControllerFinal : MonoBehaviour
                 //Check if there are any patties on the grill
                 //Loop through and check which ones are tagged as ready to flip
                 //Flip first patty that is ready to be flipped
+                //Change patty tag from ready2flip to flipped (to avoid repeated flipping)
 
 
                 //Check if there are any patties on the grill and whether the latest one is ready to be flipped
