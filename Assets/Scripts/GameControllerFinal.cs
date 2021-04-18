@@ -108,10 +108,12 @@ public class GameControllerFinal : MonoBehaviour
             {
                 for (int i = 0; i < burgers.Length; i++)
                 {
-                    //Check that there is a bottom bun
-                    if (burgers[i][0] != null && burgers[i][5] == null)
+                    //Check that there is a bottom bun, no top bun, and there are cooked patties available
+                    if (burgers[i][0] != null && burgers[i][5] == null && cookedPatties > 0)
                     {
                         PlaceIngredient(burgers[i], patty_side);
+                        cookedPatties--;
+                        UpdateText();
                         break;
                     }
                 }
@@ -184,6 +186,7 @@ public class GameControllerFinal : MonoBehaviour
                     cooked[i] = false;
                     grillPatties--;
                     cookedPatties++;
+                    UpdateText();
                     break;
                 }
             }
@@ -343,5 +346,10 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //After delay, destroy all game objects to simulate burger being taken
+    }
+
+    void UpdateText()
+    {
+        text.text = "Cooked Patties: " + cookedPatties;
     }
 }
