@@ -142,7 +142,7 @@ public class GameControllerFinal : MonoBehaviour
                 for(int i = 0; i < grillPatties; i++)
                 {
                     //Flip the oldest patty that is ready to flip
-                    if(pattiesArr[i].tag == "ready2flip")
+                    if(pattiesArr[i].tag == "ready2flip" && pattiesArr[i] != null)
                     {
                         Destroy(pattiesArr[i]);
                         pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
