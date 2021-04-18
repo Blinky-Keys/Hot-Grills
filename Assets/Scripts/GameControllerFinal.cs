@@ -131,11 +131,24 @@ public class GameControllerFinal : MonoBehaviour
 
 
                 //Check if there are any patties on the grill and whether the latest one is ready to be flipped
-                if (grillPatties > 0 && pattiesArr[grillPatties-1].tag == "ready2flip")
+                //if (grillPatties > 0 && pattiesArr[grillPatties-1].tag == "ready2flip")
+                //{
+                    //Destroy(pattiesArr[grillPatties - 1]);
+                    //pattiesArr[grillPatties - 1] = Instantiate(cookedPatty, pattyPos[grillPatties - 1], Quaternion.identity);
+                    //cooked[grillPatties - 1] = true;
+                //}
+
+                //Loop through all patties on the grill and check if they are ready to flip
+                for(int i = 0; i < grillPatties; i++)
                 {
-                    Destroy(pattiesArr[grillPatties - 1]);
-                    pattiesArr[grillPatties - 1] = Instantiate(cookedPatty, pattyPos[grillPatties - 1], Quaternion.identity);
-                    cooked[grillPatties - 1] = true;
+                    //Flip the oldest patty that is ready to flip
+                    if(pattiesArr[i].tag == "ready2flip")
+                    {
+                        Destroy(pattiesArr[i]);
+                        pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
+                        cooked[i] = true;
+                        break;
+                    }
                 }
             }
             else if(currentView == "stacking")
@@ -154,13 +167,25 @@ public class GameControllerFinal : MonoBehaviour
         //Player presses M key
         if(Input.GetKeyDown(KeyCode.M))
         {
-            if(grillPatties > 0 && cooked[grillPatties-1])
-            {
+            //if(grillPatties > 0 && cooked[grillPatties-1])
+            //{
                 //Move patty off the grill
-                Destroy(pattiesArr[grillPatties - 1]);
-                cooked[grillPatties - 1] = false;
-                grillPatties--;
-                cookedPatties++;
+                //Destroy(pattiesArr[grillPatties - 1]);
+                //cooked[grillPatties - 1] = false;
+                //grillPatties--;
+                //cookedPatties++;
+            //}
+
+            for(int i = 0; i < cooked.Length; i++)
+            {
+                if(cooked[i])
+                {
+                    Destroy(pattiesArr[i]);
+                    cooked[i] = false;
+                    grillPatties--;
+                    cookedPatties++;
+                    break;
+                }
             }
         }
 
@@ -293,8 +318,6 @@ public class GameControllerFinal : MonoBehaviour
     //General purpose function for placing ingredient on burger in the stacking view
     void PlaceIngredient(GameObject[] burgerArr, GameObject ingredient)
     {
-        Debug.Log("Called PlaceIngredient()");
-
         for(int i = 0; i < burgerArr.Length; i++)
         {
             if(burgerArr[i] == null)

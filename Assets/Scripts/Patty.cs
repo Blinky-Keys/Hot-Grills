@@ -17,10 +17,11 @@ public class patty : MonoBehaviour
     void Update()
     {
         timeSinceInit = Time.timeSinceLevelLoad - initTime;
-        Debug.Log(timeSinceInit);
+        //Debug.Log(timeSinceInit);
 
         //Once 10 seconds has passed, change the object tag to show patty is ready to flip
-        if(timeSinceInit > 10)
+        //VALUE ADJUSTED FOR DEBUGGING PURPOSES
+        if(timeSinceInit > 1)
         {
             this.tag = "ready2flip";
         }
