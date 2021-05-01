@@ -341,7 +341,7 @@ public class GameControllerFinal : MonoBehaviour
     void ServeBurger(GameObject[] burger)
     {
         //Move all of the game objects upwards by a set amount to place the burger on the order window
-        //(Add 4.6 to each objects Y component
+        //(Add 4.6 to each objects Y component)
         for(int i = 0; i < burger.Length; i++)
         {
             Vector2 temp = burger[i].transform.position;
@@ -388,7 +388,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-                        offset = 0.15f;
+                        offset = 0f;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
@@ -401,15 +401,15 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     case "patty-side-cropped(Clone)":
                         //Adjust offset
-
+                        offset = 0.1f;
                         break;
                     case "salad(Clone)":
                         //Adjust offset
-
+                        offset = 0.2f;
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-
+                        offset = 0.1f;
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
@@ -417,7 +417,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-
+                        offset = 0f;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
@@ -446,7 +446,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
@@ -475,7 +475,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
@@ -504,7 +504,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
@@ -517,27 +517,27 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     case "patty-side-cropped(Clone)":
                         //Adjust offset
-                        offset = 0.15f;
+                        offset = 0;
                         break;
                     case "salad(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
-                        offset = -0.1f;
+                        offset = 0f;
                         break;
                 }
                 break;
