@@ -33,6 +33,7 @@ public class GameControllerFinal : MonoBehaviour
     GameObject[][] burgers;
 
     //Position offset from previous ingredient (for stacking burger ingredients)
+    //offset was 0.15f
     float offset = 0.15f;
 
     //Ingredient sorting order
@@ -321,10 +322,13 @@ public class GameControllerFinal : MonoBehaviour
     //General purpose function for placing ingredient on burger in the stacking view
     void PlaceIngredient(GameObject[] burgerArr, GameObject ingredient)
     {
+        //Change the offset to place ingredient at the correct height
+
         for(int i = 0; i < burgerArr.Length; i++)
         {
             if(burgerArr[i] == null)
             {
+                UpdateOffset(ingredient, burgerArr[i - 1]);
                 burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + offset), Quaternion.identity);
                 burgerArr[i].GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
                 sortingOrder++;
@@ -345,11 +349,199 @@ public class GameControllerFinal : MonoBehaviour
             burger[i].transform.position = temp;
         }
 
-        //After delay, destroy all game objects to simulate burger being taken
+        //After delay, destroy all game objects to simulate burger being taken (possibly use a coroutine?)
+        
     }
 
     void UpdateText()
     {
+        //Change the UI text to show the number of cooked patties that are available
         text.text = "Cooked Patties: " + cookedPatties;
     }
+
+
+    //Adjust the vertial offset depending on which ingredient is being placed and which ingredient came before
+    void UpdateOffset(GameObject ingredient, GameObject previousIngredient)
+    {
+        Debug.Log("Ingredient: " + ingredient.name + " Prev Ingredient: " + previousIngredient.name);
+
+        switch(ingredient.name)
+        {
+            case "patty-side-cropped":
+                switch (previousIngredient.name)
+                {
+                    case "patty-side-cropped(Clone)":
+                        //Adjust offset
+                        offset = 0.15f;
+                        break;
+                    case "salad(Clone)":
+                        //Adjust offset
+                        offset = 0.2f;
+                        break;
+                    case "sauce(Clone)":
+                        //Adjust offset
+                        offset = 0.15f;
+                        break;
+                    case "bacon(Clone)":
+                        //Adjust offset
+                        offset = 0.015f;
+                        break;
+                    case "top_bun(Clone)":
+                        //Adjust offset
+                        offset = 0.15f;
+                        break;
+                    case "cheese(Clone)":
+                        //Adjust offset
+                        offset = -0.1f;
+                        break;
+                }
+                break;
+            case "salad":
+                switch (previousIngredient.name)
+                {
+                    case "patty-side-cropped(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "salad(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "sauce(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "bacon(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "top_bun(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "cheese(Clone)":
+                        //Adjust offset
+
+                        break;
+                }
+                break;
+            case "sauce":
+                switch (previousIngredient.name)
+                {
+                    case "patty-side-cropped(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "salad(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "sauce(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "bacon(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "top_bun(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "cheese(Clone)":
+                        //Adjust offset
+
+                        break;
+                }
+                break;
+            case "bacon":
+                switch (previousIngredient.name)
+                {
+                    case "patty-side-cropped(Clone)":
+                        //Adjust offset
+                        offset = 0.3f;
+                        break;
+                    case "salad(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "sauce(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "bacon(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "top_bun(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "cheese(Clone)":
+                        //Adjust offset
+
+                        break;
+                }
+                break;
+            case "cheese":
+                switch (previousIngredient.name)
+                {
+                    case "patty-side-cropped(Clone)":
+                        //Adjust offset
+                        offset = 0.3f;
+                        break;
+                    case "salad(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "sauce(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "bacon(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "top_bun(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "cheese(Clone)":
+                        //Adjust offset
+                        offset = 0.05f;
+                        break;
+                }
+                break;
+            case "top_bun":
+                switch (previousIngredient.name)
+                {
+                    case "patty-side-cropped(Clone)":
+                        //Adjust offset
+                        offset = 0.15f;
+                        break;
+                    case "salad(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "sauce(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "bacon(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "top_bun(Clone)":
+                        //Adjust offset
+
+                        break;
+                    case "cheese(Clone)":
+                        //Adjust offset
+                        offset = -0.1f;
+                        break;
+                }
+                break;
+        }
+    }
+
 }

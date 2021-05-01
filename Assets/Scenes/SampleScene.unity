@@ -1175,7 +1175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 519420028}
-  text: {fileID: 0}
+  text: {fileID: 14650396}
   patty: {fileID: 7940415526024101953, guid: 4c4dddcecac0ea242bdc5d5342b662a3, type: 3}
   cookedPatty: {fileID: 5824329286544619945, guid: 3732b49ebcdafda44ae6d8b1553981c1, type: 3}
   bun: {fileID: 1060922845263278054, guid: 9331c9dac4085aa45932dccb37b9e46a, type: 3}
