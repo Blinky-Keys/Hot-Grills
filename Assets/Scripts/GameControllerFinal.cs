@@ -322,12 +322,11 @@ public class GameControllerFinal : MonoBehaviour
     //General purpose function for placing ingredient on burger in the stacking view
     void PlaceIngredient(GameObject[] burgerArr, GameObject ingredient)
     {
-        //Change the offset to place ingredient at the correct height
-
         for(int i = 0; i < burgerArr.Length; i++)
         {
             if(burgerArr[i] == null)
             {
+                //Change the offset to place ingredient at the correct height
                 UpdateOffset(ingredient, burgerArr[i - 1]);
                 burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + offset), Quaternion.identity);
                 burgerArr[i].GetComponent<SpriteRenderer>().sortingOrder = sortingOrder;
@@ -394,6 +393,10 @@ public class GameControllerFinal : MonoBehaviour
                         //Adjust offset
                         offset = -0.1f;
                         break;
+                    case "bun(Clone)":
+                        //Adjust offset
+                        offset = 0.1f;
+                        break;
                 }
                 break;
             case "salad":
@@ -409,19 +412,23 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-                        offset = 0.1f;
+                        offset = 0.1f;                                                                                                                                                      
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
-
+                        offset = -0.1f;
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
-                        offset = 0f;
+                        offset = 0.01f;
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
-
+                        offset = -0.2f;
+                        break;
+                    case "bun(Clone)":
+                        //Adjust offset
+                        offset = 0.1f;
                         break;
                 }
                 break;
@@ -430,25 +437,29 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     case "patty-side-cropped(Clone)":
                         //Adjust offset
-
+                        offset = 0.2f;
                         break;
                     case "salad(Clone)":
                         //Adjust offset
-
+                        offset = 0.15f;
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-
+                        offset = 0.01f;
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
-
+                        offset = -0.1f;
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
                         offset = 0;
                         break;
                     case "cheese(Clone)":
+                        //Adjust offset
+                        offset = 0.05f;
+                        break;
+                    case "bun(Clone)":
                         //Adjust offset
 
                         break;
@@ -463,21 +474,25 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "salad(Clone)":
                         //Adjust offset
-
+                        offset = 0.2f;
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-
+                        offset = 0.2f;
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
-
+                        offset = 0.1f;
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
                         offset = 0;
                         break;
                     case "cheese(Clone)":
+                        //Adjust offset
+                        offset = 0.05f;
+                        break;
+                    case "bun(Clone)":
                         //Adjust offset
 
                         break;
@@ -492,15 +507,15 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "salad(Clone)":
                         //Adjust offset
-
+                        offset = 0.4f;
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-
+                        offset = 0.3f;
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
-
+                        offset = 0.2f;
                         break;
                     case "top_bun(Clone)":
                         //Adjust offset
@@ -510,6 +525,10 @@ public class GameControllerFinal : MonoBehaviour
                         //Adjust offset
                         offset = 0.05f;
                         break;
+                    case "bun(Clone)":
+                        //Adjust offset
+
+                        break;
                 }
                 break;
             case "top_bun":
@@ -517,15 +536,15 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     case "patty-side-cropped(Clone)":
                         //Adjust offset
-                        offset = 0;
+                        offset = 0.2f;
                         break;
                     case "salad(Clone)":
                         //Adjust offset
-                        offset = 0;
+                        offset = 0.3f;
                         break;
                     case "sauce(Clone)":
                         //Adjust offset
-                        offset = 0;
+                        offset = 0.1f;
                         break;
                     case "bacon(Clone)":
                         //Adjust offset
@@ -537,7 +556,11 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
-                        offset = 0f;
+                        offset = -0.15f;
+                        break;
+                    case "bun(Clone)":
+                        //Adjust offset
+                        offset = 0.1f;
                         break;
                 }
                 break;
