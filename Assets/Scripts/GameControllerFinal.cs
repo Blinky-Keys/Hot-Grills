@@ -10,6 +10,9 @@ public class GameControllerFinal : MonoBehaviour
     public GameObject camera;
     public Text text;
 
+    //Order generator
+    public GameObject og;
+
     //View that the player is currently seeing
     string currentView = "grills";
 
@@ -92,7 +95,6 @@ public class GameControllerFinal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Player presses P key
         if(Input.GetKeyDown(KeyCode.P))
         {

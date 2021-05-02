@@ -12,39 +12,47 @@ public class OrderGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //Init array of ingredients
         ingredients = new string[]
         {
             "patty",
             "cheese",
             "bacon",
             "salad",
-            "sauce",
-            "stop"
+            "sauce"
         };
+
+        //Generate order every 10 seconds
+        InvokeRepeating("GenerateOrder", 0f, 10f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public string[] GenerateOrder()
     {
-        //Max order size is 10 for now
+        //Max order size is 5 for now
         //Need to make orders generate without gaps in ingredients
-        string[] order = new string[10];
+        string[] order = new string[5];
 
         for(int i = 0; i < order.Length; i++)
         {
-            int randNum = Random.Range(1, ingredients.Length);
-            if(ingredients[randNum].Equals("stop"))
-            {
-                order[i] = ingredients[randNum];
-                break;
-            }
-            order[i] = ingredients[randNum];
+            order[i] = ingredients[Random.Range(1, ingredients.Length)];
         }
+
+        string temp = "";
+        
+        for(int i = 0; i < order.Length; i++)
+        {
+            temp += " " + order[i];
+        }
+
+        Debug.Log(temp);
+
         return order;
     }
 
