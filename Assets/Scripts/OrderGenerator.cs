@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class OrderGenerator : MonoBehaviour
 {
     public string difficulty = "easy";
+
+    public Canvas c;
 
     //Array containing all available ingredients
     private string[] ingredients;
@@ -52,6 +55,13 @@ public class OrderGenerator : MonoBehaviour
         }
 
         Debug.Log(temp);
+
+        //VERY TEMPORARY
+        GameObject newGo = new GameObject("newOrder");
+        newGo.transform.SetParent(c.transform);
+
+        Text newText = newGo.AddComponent<Text>();
+        newText.text = temp;
 
         return order;
     }
