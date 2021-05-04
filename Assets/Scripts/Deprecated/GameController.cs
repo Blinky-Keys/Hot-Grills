@@ -336,16 +336,16 @@ public class GameController : MonoBehaviour
         }
 
         //TESTING ORDER GENERATOR
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            string[] order = og.GenerateOrder();
-            string output = "";
-            foreach(string s in order)
-            {
-                output += s + " ";
-            }
-            Debug.Log(output);
-        }
+        //if(Input.GetKeyDown(KeyCode.G))
+        //{
+        //    string[] order = og.GenerateOrder();
+        //    string output = "";
+        //    foreach(string s in order)
+        //    {
+        //        output += s + " ";
+        //    }
+        //    Debug.Log(output);
+        //}
     }
 
     //Function for changing the position of the camera

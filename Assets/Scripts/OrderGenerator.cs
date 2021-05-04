@@ -7,10 +7,15 @@ public class OrderGenerator : MonoBehaviour
 {
     public string difficulty = "easy";
 
-    public Canvas c;
-
     //Array containing all available ingredients
     private string[] ingredients;
+
+    //Object used for showing orders to the player
+    public GameObject ticket;
+
+    //Array (possibly change to queue) of pending orders
+    private GameObject[] orders;
+    private int pendingOrders;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +31,10 @@ public class OrderGenerator : MonoBehaviour
             "sauce"
         };
 
+        //Arbitrarily set array size to 50 because who's gonna have 50 orders waiting lol
+        orders = new GameObject[50];
+        pendingOrders = 0;
+
         //Generate order every 10 seconds
         InvokeRepeating("GenerateOrder", 0f, 10f);
     }
@@ -36,19 +45,25 @@ public class OrderGenerator : MonoBehaviour
 
     }
 
-    public string[] GenerateOrder()
+    public void GenerateOrder()
     {
+        pendingOrders++;
+
         //Max order size is 5 for now
         //Need to make orders generate without gaps in ingredients
-        string[] order = new string[5];
+        string order = "";
 
         for(int i = 0; i < order.Length; i++)
         {
-            order[i] = ingredients[Random.Range(1, ingredients.Length)];
+            order += ingredients[Random.Range(1, ingredients.Length)] + " ";
         }
 
+        orders[pendingOrders] = Instantiate(ticket, new Vector3(2.64764357f, 2.86149859f, 0), Quaternion.identity);
+        orders[pendingOrders].GetComponent<OrderController>().UpdateText(order);
+
+
+        //DEBUGGING CODE ONLY
         string temp = "";
-        
         for(int i = 0; i < order.Length; i++)
         {
             temp += " " + order[i];
@@ -56,14 +71,6 @@ public class OrderGenerator : MonoBehaviour
 
         Debug.Log(temp);
 
-        //VERY TEMPORARY
-        GameObject newGo = new GameObject("newOrder");
-        newGo.transform.SetParent(c.transform);
-
-        Text newText = newGo.AddComponent<Text>();
-        newText.text = temp;
-
-        return order;
     }
 
     

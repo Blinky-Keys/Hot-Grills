@@ -42,7 +42,7 @@ public class GameControllerFinal : MonoBehaviour
     //Ingredient sorting order
     int sortingOrder = 10;
 
-    //Import assets that are going to be created whena burger is being made
+    //Import assets that are going to be created when a burger is being made
     public GameObject patty;
     public GameObject cookedPatty;
     public GameObject bun;
@@ -350,8 +350,22 @@ public class GameControllerFinal : MonoBehaviour
             burger[i].transform.position = temp;
         }
 
-        //After delay, destroy all game objects to simulate burger being taken (possibly use a coroutine?)
-        
+        //After delay, destroy all game objects to simulate burger being taken (using a coroutine)
+        for(int i = 0; i < burger.Length; i++)
+        {
+            StartCoroutine(ExecuteAfterTime(2, burger[i]));
+        }
+    }
+
+    IEnumerator ExecuteAfterTime(float time, GameObject go)
+    {
+        yield return new WaitForSeconds(time);
+
+        //Destroy gameobjects making up the burger
+        Destroy(go);
+
+        //Play bell sound to signify order being taken
+
     }
 
     void UpdateText()
