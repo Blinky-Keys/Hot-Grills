@@ -298,8 +298,16 @@ public class GameControllerFinal : MonoBehaviour
                 if (burgers[i][0] != null && burgers[i][5] != null && burgers[i][6] == null)
                 {
                     PlaceIngredient(burgers[i], topBun);
-                    ServeBurger(burgers[i]);
-                    break;
+
+                    if(og.GetComponent<OrderGenerator>().CheckOrder(burgers[i]))
+                    {
+                        ServeBurger(burgers[i]);
+                        break;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
             }
         }
@@ -378,7 +386,7 @@ public class GameControllerFinal : MonoBehaviour
     //Adjust the vertial offset depending on which ingredient is being placed and which ingredient came before
     void UpdateOffset(GameObject ingredient, GameObject previousIngredient)
     {
-        Debug.Log("Ingredient: " + ingredient.name + " Prev Ingredient: " + previousIngredient.name);
+        //Debug.Log("Ingredient: " + ingredient.name + " Prev Ingredient: " + previousIngredient.name);
 
         switch(ingredient.name)
         {
