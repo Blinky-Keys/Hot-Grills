@@ -60,7 +60,7 @@ public class OrderGenerator : MonoBehaviour
 
         //Debug.Log(order);
 
-        orders[pendingOrders] = Instantiate(ticket, new Vector3(2.64764357f, 2.86149859f, 0), Quaternion.identity);
+        orders[pendingOrders] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+10f, 3f, 0), Quaternion.identity);
         orders[pendingOrders].GetComponent<OrderController>().UpdateText(order);
 
 
@@ -73,6 +73,23 @@ public class OrderGenerator : MonoBehaviour
 
         //Debug.Log(temp);
 
+    }
+
+    //Removes order from queue of pending orders
+    void RemoveOrder()
+    {
+
+    }
+
+    //Moves the pending order tickets along the screen after one has been completed
+    void MoveOrders()
+    {
+
+    }
+
+    bool CheckOrder(GameObject[] burgerArr)
+    {
+        return false;
     }
 
     
