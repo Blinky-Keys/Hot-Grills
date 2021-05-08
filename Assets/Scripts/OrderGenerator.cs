@@ -53,10 +53,12 @@ public class OrderGenerator : MonoBehaviour
         //Need to make orders generate without gaps in ingredients
         string order = "";
 
-        for(int i = 0; i < order.Length; i++)
+        for(int i = 0; i < ingredients.Length; i++)
         {
             order += ingredients[Random.Range(1, ingredients.Length)] + " ";
         }
+
+        //Debug.Log(order);
 
         orders[pendingOrders] = Instantiate(ticket, new Vector3(2.64764357f, 2.86149859f, 0), Quaternion.identity);
         orders[pendingOrders].GetComponent<OrderController>().UpdateText(order);
@@ -69,7 +71,7 @@ public class OrderGenerator : MonoBehaviour
             temp += " " + order[i];
         }
 
-        Debug.Log(temp);
+        //Debug.Log(temp);
 
     }
 

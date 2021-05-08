@@ -7,12 +7,10 @@ using TMPro;
 public class OrderController : MonoBehaviour
 {
 
-    private TextMeshPro order;
-
     // Start is called before the first frame update
     void Start()
     {
-        order = GetComponent<TMPro.TextMeshPro>();
+        
     }
 
     // Update is called once per frame
@@ -23,6 +21,9 @@ public class OrderController : MonoBehaviour
 
     public void UpdateText(string text)
     {
-        Debug.Log(order.text);
+        //DEBUGGING
+        //Debug.Log(gameObject.transform.Find("Canvas").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>());
+        TextMeshProUGUI t = gameObject.transform.Find("Canvas").transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
+        t.text = text;
     }
 }
