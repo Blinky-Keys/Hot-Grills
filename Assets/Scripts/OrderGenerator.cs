@@ -81,19 +81,19 @@ public class OrderGenerator : MonoBehaviour
     }
 
     //Removes order from queue of pending orders
-    void RemoveOrder()
+    public void RemoveOrder()
     {
         Destroy(orderTickets[0]);
         orderContents[0] = null;
     }
 
     //Moves the pending order tickets along the screen after one has been completed
-    void MoveOrders()
+    public void MoveOrders()
     {
         //Move all tickets in the game world
-        for(int i = 1; i < orderTickets.Length; i++)
+        for(int i = 1; i < pendingOrders; i++)
         {
-            Vector3 pos = orderTickets[i].transform.position;
+            Vector2 pos = orderTickets[i].transform.position;
             pos.x += 5f;
             orderTickets[i].transform.position = pos;
         }
@@ -108,6 +108,16 @@ public class OrderGenerator : MonoBehaviour
     public bool CheckOrder(GameObject[] burgerArr)
     {
         string[] order = orderContents[1].Split(' ');
+
+        //=========== DEBUG CODE =========
+        string temp = " ";
+        for(int i = 0; i < order.Length; i++)
+        {
+            temp += order[i];
+        }
+        Debug.Log(temp);
+        //==================================
+
 
         for(int i = 0; i < order.Length; i++)
         {

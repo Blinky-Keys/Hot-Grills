@@ -358,6 +358,10 @@ public class GameControllerFinal : MonoBehaviour
             burger[i].transform.position = temp;
         }
 
+        //Call the functions to update the order system
+        og.GetComponent<OrderGenerator>().RemoveOrder();
+        og.GetComponent<OrderGenerator>().MoveOrders();
+
         //After delay, destroy all game objects to simulate burger being taken (using a coroutine)
         for(int i = 0; i < burger.Length; i++)
         {
