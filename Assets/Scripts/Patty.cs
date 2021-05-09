@@ -20,7 +20,7 @@ public class patty : MonoBehaviour
         //Debug.Log(timeSinceInit);
 
         //Once 10 seconds has passed, change the object tag to show patty is ready to flip
-        //VALUE ADJUSTED TO 1 FOR DEBUGGING PURPOSES
+        //VALUE ADJUSTED TO 1 FOR TESTING PURPOSES
         if(timeSinceInit > 1)
         {
             this.tag = "ready2flip";

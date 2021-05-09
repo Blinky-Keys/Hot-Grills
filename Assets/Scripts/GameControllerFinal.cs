@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
 
 public class GameControllerFinal : MonoBehaviour
@@ -10,8 +11,13 @@ public class GameControllerFinal : MonoBehaviour
     public GameObject camera;
     public Text text;
 
+    public TextMeshProUGUI scoreText;
+
     //Order generator
     public GameObject og;
+
+    //Player score
+    int score = 0;
 
     //View that the player is currently seeing
     string currentView = "grills";
@@ -303,17 +309,29 @@ public class GameControllerFinal : MonoBehaviour
                     {
                         ServeBurger(burgers[i]);
                         og.GetComponent<OrderGenerator>().UpdateOrders();
+
+                        //Increase player score
+                        score += 100;
+
+                        //Play increase score sound
+
                     }
                     else
                     {
-                        //Penalise player for getting order wrong
-                        
+                        //Decrease player score
+                        score -= 50;
+
+                        //Play penalty sound
+
                     }
                     
                     break;
                 }
             }
         }
+
+        //Update the score UI
+        UpdateScore();
     }
 
     //Function for changing the position of the camera
@@ -383,6 +401,12 @@ public class GameControllerFinal : MonoBehaviour
     {
         //Change the UI text to show the number of cooked patties that are available
         text.text = "Cooked Patties: " + cookedPatties;
+    }
+
+    void UpdateScore()
+    {
+        //Change the UI to reflect playeres current score
+        scoreText.text = "Score: " + score;
     }
 
 
