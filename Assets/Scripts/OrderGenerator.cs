@@ -53,7 +53,6 @@ public class OrderGenerator : MonoBehaviour
         pendingOrders++;
 
         //Max order size is 5 for now
-        //Need to make orders generate without gaps in ingredients
         string order = "";
 
         for(int i = 0; i < ingredients.Length; i++)
@@ -61,7 +60,7 @@ public class OrderGenerator : MonoBehaviour
             order += ingredients[Random.Range(1, ingredients.Length)] + " ";
         }
 
-        orderContents[pendingOrders] = order;
+        orderContents[pendingOrders-1] = order;
 
         //Debug.Log(order);
 
@@ -70,7 +69,7 @@ public class OrderGenerator : MonoBehaviour
 
 
         //DEBUGGING CODE ONLY
-        string temp = "";
+        string temp = " ";
         for(int i = 0; i < order.Length; i++)
         {
             temp += " " + order[i];
@@ -80,59 +79,26 @@ public class OrderGenerator : MonoBehaviour
 
     }
 
-    //Removes order from queue of pending orders
-    public void RemoveOrder()
+    public void UpdateOrders()
     {
-        Destroy(orderTickets[0]);
-        orderContents[0] = null;
-    }
+        //Remove the order at the beginning or the array and move all other orders down one space
 
-    //Moves the pending order tickets along the screen after one has been completed
-    public void MoveOrders()
-    {
-        //Move all tickets in the game world
-        for(int i = 1; i < pendingOrders; i++)
-        {
-            Vector2 pos = orderTickets[i].transform.position;
-            pos.x += 5f;
-            orderTickets[i].transform.position = pos;
-        }
-
-        //Move all tickets up one space in the array
-        for(int i = 1; i < orderTickets.Length; i++)
-        {
-            orderTickets[i - 1] = orderTickets[i];
-        }
     }
 
     public bool CheckOrder(GameObject[] burgerArr)
     {
-        string[] order = orderContents[1].Split(' ');
+        string[] orderCheck = orderContents[0].Split(' ');
 
-        //=========== DEBUG CODE =========
-        string temp = " ";
-        for(int i = 0; i < order.Length; i++)
+        for(int i = 1; i < burgerArr.Length-2; i++)
         {
-            temp += order[i];
-        }
-        Debug.Log(temp);
-        //==================================
-
-
-        for(int i = 0; i < order.Length; i++)
-        {
-            //Debug.Log("Order arr: " + order[i] + " Burger Arr: " + burgerArr[i].name);
-        }
-
-        for(int i = 0; i < order.Length; i++)
-        {
-            if(!burgerArr[i+1].name.ToLower().Contains(order[i]))
+            if(!burgerArr[i].name.ToLower().Contains(orderCheck[i-1]))
             {
-                Debug.Log("burger is UNCLEAN");
+                Debug.Log("burger UNCLEAN");
                 return false;
             }
         }
-        Debug.Log("buruger is CLEAN");
+
+        Debug.Log("burger CLEAN");
         return true;
     }
 

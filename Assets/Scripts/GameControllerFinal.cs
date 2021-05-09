@@ -299,15 +299,17 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     PlaceIngredient(burgers[i], topBun);
 
-                    if(og.GetComponent<OrderGenerator>().CheckOrder(burgers[i]))
+                    if (og.GetComponent<OrderGenerator>().CheckOrder(burgers[i]))
                     {
                         ServeBurger(burgers[i]);
-                        break;
                     }
                     else
                     {
-                        return;
+                        //Penalise player for getting order wrong
+                        
                     }
+                    
+                    break;
                 }
             }
         }
@@ -358,9 +360,7 @@ public class GameControllerFinal : MonoBehaviour
             burger[i].transform.position = temp;
         }
 
-        //Call the functions to update the order system
-        og.GetComponent<OrderGenerator>().RemoveOrder();
-        og.GetComponent<OrderGenerator>().MoveOrders();
+        og.GetComponent<OrderGenerator>().UpdateOrders();
 
         //After delay, destroy all game objects to simulate burger being taken (using a coroutine)
         for(int i = 0; i < burger.Length; i++)
