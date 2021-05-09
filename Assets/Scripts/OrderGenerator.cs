@@ -66,8 +66,8 @@ public class OrderGenerator : MonoBehaviour
         orderTickets[numItemsInArray(orderContents)].GetComponent<OrderController>().UpdateText(order);
 
 
-        //Debug.Log(orderContents[0]);
-        Debug.Log(pendingOrders);
+        Debug.Log(orderContents[0]);
+        //Debug.Log(pendingOrders);
 
     }
 
