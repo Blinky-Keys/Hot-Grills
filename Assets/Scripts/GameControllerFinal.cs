@@ -302,6 +302,7 @@ public class GameControllerFinal : MonoBehaviour
                     if (og.GetComponent<OrderGenerator>().CheckOrder(burgers[i]))
                     {
                         ServeBurger(burgers[i]);
+                        og.GetComponent<OrderGenerator>().UpdateOrders();
                     }
                     else
                     {
@@ -359,8 +360,6 @@ public class GameControllerFinal : MonoBehaviour
             temp.y += 4.6f;
             burger[i].transform.position = temp;
         }
-
-        og.GetComponent<OrderGenerator>().UpdateOrders();
 
         //After delay, destroy all game objects to simulate burger being taken (using a coroutine)
         for(int i = 0; i < burger.Length; i++)

@@ -60,29 +60,36 @@ public class OrderGenerator : MonoBehaviour
             order += ingredients[Random.Range(1, ingredients.Length)] + " ";
         }
 
-        orderContents[pendingOrders-1] = order;
+        orderContents[numItemsInArray(orderContents)] = order;
 
         //Debug.Log(order);
 
-        orderTickets[pendingOrders] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+10f, 3f, 0), Quaternion.identity);
-        orderTickets[pendingOrders].GetComponent<OrderController>().UpdateText(order);
+        orderTickets[numItemsInArray(orderContents)] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+10f, 3f, 0), Quaternion.identity);
+        orderTickets[numItemsInArray(orderContents)].GetComponent<OrderController>().UpdateText(order);
 
 
-        //DEBUGGING CODE ONLY
-        string temp = " ";
-        for(int i = 0; i < order.Length; i++)
-        {
-            temp += " " + order[i];
-        }
-
-        //Debug.Log(temp);
+        Debug.Log(orderContents[0]);
 
     }
 
     public void UpdateOrders()
     {
-        //Remove the order at the beginning or the array and move all other orders down one space
+        Destroy(orderTickets[1]);
 
+        for(int i = 0; i < orderTickets.Length; i++)
+        {
+            if (orderTickets[i] == null) break;
+
+            Vector2 pos = orderTickets[i].transform.position;
+            pos.x += 0.5f;
+            orderTickets[i].transform.position = pos;
+        }
+
+        for(int i = 1; i < orderContents.Length; i++)
+        {
+            orderContents[i - 1] = orderContents[i];
+            orderTickets[i - 1] = orderTickets[i];
+        }
     }
 
     public bool CheckOrder(GameObject[] burgerArr)
@@ -102,5 +109,18 @@ public class OrderGenerator : MonoBehaviour
         return true;
     }
 
+    //Counts the number of items in array. Type of object in array doesn't matter as function is generic
+    int numItemsInArray<T>(T[] arr)
+    {
+        int count = 0;
+        for(int i = 0; i < arr.Length; i++)
+        {
+            if(arr[i] != null)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
     
 }
