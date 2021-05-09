@@ -76,12 +76,12 @@ public class OrderGenerator : MonoBehaviour
     {
         Destroy(orderTickets[1]);
 
-        for(int i = 0; i < orderTickets.Length; i++)
+        for(int i = 1; i < orderTickets.Length; i++)
         {
             if (orderTickets[i] == null) break;
 
             Vector2 pos = orderTickets[i].transform.position;
-            pos.x += 0.5f;
+            pos.x += 2.5f;
             orderTickets[i].transform.position = pos;
         }
 
@@ -106,6 +106,7 @@ public class OrderGenerator : MonoBehaviour
         }
 
         Debug.Log("burger CLEAN");
+        pendingOrders--;
         return true;
     }
 
