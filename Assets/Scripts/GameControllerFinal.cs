@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameControllerFinal : MonoBehaviour
@@ -101,8 +102,18 @@ public class GameControllerFinal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check whether or not the player has too many orders still pending
+        if(og.GetComponent<OrderGenerator>().GetPendingOrders() > 2)
+        {
+            //Play some sort of sound
+
+            //Show gameover screen (after some time?)
+            //StartCoroutine(WaitForGameOver(2f));
+
+        }
+
         //Player presses P key
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if(currentView == "grills")
             {
@@ -110,7 +121,15 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     return;
                 }
-                pattiesArr[grillPatties] = Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
+                for(int i = 0; i < pattiesArr.Length; i++)
+                {
+                    if(pattiesArr[i] == null)
+                    {
+                        pattiesArr[i] = Instantiate(patty, pattyPos[i], Quaternion.identity);
+                        break;
+                    }
+                }
+                //pattiesArr[grillPatties] = Instantiate(patty, pattyPos[grillPatties], Quaternion.identity);
                 grillPatties++;
             }
             else if(currentView == "stacking")
@@ -150,11 +169,13 @@ public class GameControllerFinal : MonoBehaviour
                 //}
 
                 //Loop through all patties on the grill and check if they are ready to flip
-                for(int i = 0; i < grillPatties; i++)
+                for(int i = 0; i < pattiesArr.Length; i++)
                 {
                     //Flip the oldest patty that is ready to flip
-                    if(pattiesArr[i].tag == "ready2flip" && pattiesArr[i] != null)
+                    //if(pattiesArr[i].tag == "ready2flip" && pattiesArr[i] != null)
+                    if(pattiesArr[i] != null && pattiesArr[i].tag == "ready2flip")
                     {
+                        Debug.Log(pattiesArr[i]);
                         Destroy(pattiesArr[i]);
                         pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
                         cooked[i] = true;
@@ -395,6 +416,13 @@ public class GameControllerFinal : MonoBehaviour
 
         //Play bell sound to signify order being taken
 
+    }
+
+    IEnumerator WaitForGameOver(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        SceneManager.LoadScene("GameOver");
     }
 
     void UpdateText()

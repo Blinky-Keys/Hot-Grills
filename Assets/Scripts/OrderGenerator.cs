@@ -122,5 +122,10 @@ public class OrderGenerator : MonoBehaviour
         }
         return count;
     }
+
+    public int GetPendingOrders()
+    {
+        return pendingOrders;
+    }
     
 }
