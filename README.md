@@ -16,5 +16,9 @@ R - Place bacon
 B - Place bun  
 S - Place salad  
 M - Move patty off grill  
+Space - Add top bun  
+Backspace - Clear counter  
+
+
 
 *Any feedback is appreciated. How you get it to me is up to you.*
