@@ -57,7 +57,7 @@ public class OrderGenerator : MonoBehaviour
 
         for(int i = 0; i < ingredients.Length; i++)
         {
-            order += ingredients[Random.Range(1, ingredients.Length)] + " ";
+            order += ingredients[Random.Range(0, ingredients.Length)] + " ";
         }
 
         orderContents[numItemsInArray(orderContents)] = order;

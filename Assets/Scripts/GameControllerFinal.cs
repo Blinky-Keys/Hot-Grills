@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.IO;
 
 public class GameControllerFinal : MonoBehaviour
 {
@@ -79,7 +80,7 @@ public class GameControllerFinal : MonoBehaviour
         //Positions in 2D space where buns will be rendered
         bunPos = new Vector2[]
         {
-            new Vector2(16f, -4.6f),
+            new Vector2(16.5f, -4.6f),
             new Vector2(19f, -4.6f),
             new Vector2(22f, -4.6f),
             new Vector2(25f, -4.6f),
@@ -108,7 +109,7 @@ public class GameControllerFinal : MonoBehaviour
             //Play some sort of sound
 
             //Show gameover screen (after some time?)
-            //StartCoroutine(WaitForGameOver(2f));
+            StartCoroutine(WaitForGameOver(2f));
 
         }
 
@@ -175,7 +176,6 @@ public class GameControllerFinal : MonoBehaviour
                     //if(pattiesArr[i].tag == "ready2flip" && pattiesArr[i] != null)
                     if(pattiesArr[i] != null && pattiesArr[i].tag == "ready2flip")
                     {
-                        Debug.Log(pattiesArr[i]);
                         Destroy(pattiesArr[i]);
                         pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
                         cooked[i] = true;
@@ -422,6 +422,13 @@ public class GameControllerFinal : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
+        //Write the players final score to a file
+        using (StreamWriter sw = new StreamWriter("Assets/score.txt"))
+        {
+            sw.WriteLine(score);
+        }
+
+        //Load the game over screen
         SceneManager.LoadScene("GameOver");
     }
 
