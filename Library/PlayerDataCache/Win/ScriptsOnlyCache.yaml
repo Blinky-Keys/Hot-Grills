@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - OrderGenerator
     - Patty
     - PauseMenu
+    - ScreenManager
     - patty
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
@@ -38,6 +39,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
@@ -62,12 +64,26 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11762}
     - Class: 114
+      Script: {instanceID: 12128}
+    - Class: 114
       Script: {instanceID: 12840}
+    - Class: 114
+      Script: {instanceID: 13636}
+    - Class: 114
+      Script: {instanceID: 14016}
+    - Class: 114
+      Script: {instanceID: 14374}
     - Class: 114
       Script: {instanceID: 14480}
     - Class: 114
+      Script: {instanceID: 14972}
+    - Class: 114
       Script: {instanceID: 15148}
+    - Class: 114
+      Script: {instanceID: 20514}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -76,6 +92,8 @@ ScriptsOnlyBuild:
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
       Script: {instanceID: 0}
     - Class: 223
       Script: {instanceID: 0}
@@ -105,11 +123,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11762}
     - Class: 114
+      Script: {instanceID: 12070}
+    - Class: 114
       Script: {instanceID: 12128}
     - Class: 114
       Script: {instanceID: 12840}
     - Class: 114
       Script: {instanceID: 12900}
+    - Class: 114
+      Script: {instanceID: 13236}
     - Class: 114
       Script: {instanceID: 13636}
     - Class: 114
@@ -962,6 +984,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: d7912c765efb61cb6ee4c7c78f120d21
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScreenManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

@@ -61,9 +61,33 @@ public class GameControllerFinal : MonoBehaviour
     public GameObject topBun;
     public GameObject bacon;
 
+    KeyCode pattyKeyCode;
+    KeyCode bunKeyCode;
+    KeyCode baconKeyCode;
+    KeyCode sauceKeyCode;
+    KeyCode saladKeyCode;
+    KeyCode cheeseKeyCode;
+    KeyCode serveKeyCode;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Read the controls file to bind the controls to the players liking
+        using(StreamReader sr = new StreamReader("Assets/controls.txt"))
+        {
+            pattyKeyCode = ReadKeyCode(sr);
+            bunKeyCode = ReadKeyCode(sr);
+            baconKeyCode = ReadKeyCode(sr);
+            sauceKeyCode = ReadKeyCode(sr);
+            saladKeyCode = ReadKeyCode(sr);
+            cheeseKeyCode = ReadKeyCode(sr);
+            serveKeyCode = ReadKeyCode(sr);
+        }
+
+        //Remove the file to prevent tampering
+        //File.Delete("Assets/controls.txt");
+
+
         //Positions in 2D space where patties will be created
         pattyPos = new Vector2[] {
             new Vector2(2, 0),
@@ -114,7 +138,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses P key
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(pattyKeyCode))
         {
             if(currentView == "grills")
             {
@@ -150,7 +174,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses F key
-        if(Input.GetKeyDown(KeyCode.F))
+        if(Input.GetKeyDown(sauceKeyCode))
         {
             if(currentView == "grills")
             {
@@ -223,7 +247,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses B key
-        if(Input.GetKeyDown(KeyCode.B))
+        if(Input.GetKeyDown(bunKeyCode))
         {
             //Place down bottom bun
             for(int i = 0; i < burgers.Length; i++)
@@ -251,7 +275,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses S key
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Input.GetKeyDown(saladKeyCode))
         {
             if(currentView == "stacking")
             {
@@ -269,7 +293,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses C key
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(cheeseKeyCode))
         {
             if(currentView == "stacking")
             {
@@ -286,7 +310,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses R key
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(baconKeyCode))
         {
             if(currentView == "stacking")
             {
@@ -317,7 +341,7 @@ public class GameControllerFinal : MonoBehaviour
         }
 
         //Player presses spacebar
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(serveKeyCode))
         {
             for(int i = 0; i < burgers.Length; i++)
             {
@@ -442,6 +466,11 @@ public class GameControllerFinal : MonoBehaviour
     {
         //Change the UI to reflect playeres current score
         scoreText.text = "Score: " + score;
+    }
+
+    KeyCode ReadKeyCode(StreamReader sr)
+    {
+        return (KeyCode)System.Enum.Parse(typeof(KeyCode), sr.ReadLine());
     }
 
 
