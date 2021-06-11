@@ -62,7 +62,7 @@ public class OrderGenerator : MonoBehaviour
 
         orderContents[numItemsInArray(orderContents)] = order;
 
-        orderTickets[numItemsInArray(orderContents)] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+10f, 3f, 0), Quaternion.identity);
+        orderTickets[numItemsInArray(orderContents)] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+10f, 3.45f, 0), Quaternion.identity);
         orderTickets[numItemsInArray(orderContents)].GetComponent<OrderController>().UpdateText(order);
 
 

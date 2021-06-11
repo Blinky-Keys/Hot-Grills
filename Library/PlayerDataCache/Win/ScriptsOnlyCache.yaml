@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ControlsManager
     - GameController
     - GameControllerFinal
     - GameControllerV3
@@ -39,7 +40,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
@@ -68,19 +71,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12840}
     - Class: 114
-      Script: {instanceID: 13636}
+      Script: {instanceID: 13008}
     - Class: 114
-      Script: {instanceID: 14016}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14018}
     - Class: 114
-      Script: {instanceID: 14480}
+      Script: {instanceID: 14376}
     - Class: 114
-      Script: {instanceID: 14972}
+      Script: {instanceID: 14482}
     - Class: 114
-      Script: {instanceID: 15148}
+      Script: {instanceID: 14974}
     - Class: 114
-      Script: {instanceID: 20514}
+      Script: {instanceID: 15150}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -125,31 +128,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12070}
     - Class: 114
+      Script: {instanceID: 12074}
+    - Class: 114
       Script: {instanceID: 12128}
+    - Class: 114
+      Script: {instanceID: 12654}
     - Class: 114
       Script: {instanceID: 12840}
     - Class: 114
       Script: {instanceID: 12900}
     - Class: 114
-      Script: {instanceID: 13236}
+      Script: {instanceID: 13238}
     - Class: 114
-      Script: {instanceID: 13636}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 14016}
+      Script: {instanceID: 14018}
     - Class: 114
-      Script: {instanceID: 14038}
+      Script: {instanceID: 14040}
     - Class: 114
-      Script: {instanceID: 14374}
+      Script: {instanceID: 14376}
     - Class: 114
-      Script: {instanceID: 14480}
+      Script: {instanceID: 14482}
     - Class: 114
-      Script: {instanceID: 14790}
+      Script: {instanceID: 14792}
     - Class: 114
-      Script: {instanceID: 14972}
+      Script: {instanceID: 14974}
     - Class: 114
-      Script: {instanceID: 15148}
+      Script: {instanceID: 15150}
     - Class: 114
-      Script: {instanceID: 15194}
+      Script: {instanceID: 15186}
+    - Class: 114
+      Script: {instanceID: 15198}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -202,31 +211,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12840}
     - Class: 114
-      Script: {instanceID: 13058}
+      Script: {instanceID: 13060}
     - Class: 114
-      Script: {instanceID: 13284}
+      Script: {instanceID: 13286}
     - Class: 114
-      Script: {instanceID: 13636}
+      Script: {instanceID: 13638}
     - Class: 114
-      Script: {instanceID: 13974}
+      Script: {instanceID: 13976}
     - Class: 114
-      Script: {instanceID: 14016}
+      Script: {instanceID: 14018}
     - Class: 114
-      Script: {instanceID: 14374}
-    - Class: 114
-      Script: {instanceID: 14480}
+      Script: {instanceID: 14376}
     - Class: 114
       Script: {instanceID: 14482}
     - Class: 114
-      Script: {instanceID: 14682}
+      Script: {instanceID: 14484}
     - Class: 114
-      Script: {instanceID: 14936}
+      Script: {instanceID: 14684}
     - Class: 114
-      Script: {instanceID: 15148}
+      Script: {instanceID: 14938}
     - Class: 114
-      Script: {instanceID: 15704}
+      Script: {instanceID: 15150}
     - Class: 114
-      Script: {instanceID: 15774}
+      Script: {instanceID: 20356}
+    - Class: 114
+      Script: {instanceID: 20372}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -534,6 +543,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: Benchmark01
+  - hash:
+      serializedVersion: 2
+      Hash: d7912c765efb61cb6ee4c7c78f120d21
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ScreenManager
   - hash:
       serializedVersion: 2
       Hash: 97cbbbd8356315a6e19a9f71f2a534f9
@@ -968,6 +983,12 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
+      Hash: 1c1cd5575a3dd7159e566b523216017c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ControlsManager
+  - hash:
+      serializedVersion: 2
       Hash: 0c05f2bfb402def3f0a85a62a2323c7f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -984,15 +1005,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: d7912c765efb61cb6ee4c7c78f120d21
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ScreenManager
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/Hot Grills.exe
+  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/11-6-21/Hot Grills.exe

@@ -47,14 +47,16 @@ public class ControlsManager : MonoBehaviour
         }
     }
 
+    //Change the text on the button that has been clicked
     void ChangeButtonText(GameObject go, string s)
     {
         go.transform.Find("Text").GetComponent<Text>().text = s;
     }
 
+    //Write the controls to the file to be read when the game starts
     public void WriteControls()
     {
-        using(StreamWriter sw = new StreamWriter("Assets/controls.txt"))
+        using(StreamWriter sw = new StreamWriter(Application.dataPath + "/controls.txt"))
         {
             foreach(Transform child in img.transform)
             {

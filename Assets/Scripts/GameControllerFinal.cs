@@ -73,7 +73,7 @@ public class GameControllerFinal : MonoBehaviour
     void Start()
     {
         //Read the controls file to bind the controls to the players liking
-        using(StreamReader sr = new StreamReader("Assets/controls.txt"))
+        using(StreamReader sr = new StreamReader(Application.dataPath + "/controls.txt"))
         {
             pattyKeyCode = ReadKeyCode(sr);
             bunKeyCode = ReadKeyCode(sr);
@@ -81,7 +81,7 @@ public class GameControllerFinal : MonoBehaviour
             sauceKeyCode = ReadKeyCode(sr);
             saladKeyCode = ReadKeyCode(sr);
             cheeseKeyCode = ReadKeyCode(sr);
-            serveKeyCode = ReadKeyCode(sr);
+                                                                                                                  serveKeyCode = ReadKeyCode(sr);
         }
 
         //Remove the file to prevent tampering
@@ -447,7 +447,7 @@ public class GameControllerFinal : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         //Write the players final score to a file
-        using (StreamWriter sw = new StreamWriter("Assets/score.txt"))
+        using (StreamWriter sw = new StreamWriter(Application.dataPath + "/score.txt"))
         {
             sw.WriteLine(score);
         }

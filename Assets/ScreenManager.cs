@@ -14,7 +14,7 @@ public class ScreenManager : MonoBehaviour
     void Start()
     {
         string line = "";
-        using(StreamReader sr = new StreamReader("Assets/score.txt"))
+        using(StreamReader sr = new StreamReader(Application.dataPath + "/score.txt"))
         {
             line = sr.ReadLine();
         }
