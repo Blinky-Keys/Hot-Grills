@@ -128,7 +128,7 @@ public class GameControllerFinal : MonoBehaviour
     void Update()
     {
         //Check whether or not the player has too many orders still pending
-        if(og.GetComponent<OrderGenerator>().GetPendingOrders() > 2)
+        if(og.GetComponent<OrderGenerator>().GetPendingOrders() > 10)
         {
             //Play some sort of sound
 

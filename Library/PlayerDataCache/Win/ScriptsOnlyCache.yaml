@@ -1010,4 +1010,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/11-6-21/Hot Grills.exe
+  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/Stable/Hot Grills.exe
