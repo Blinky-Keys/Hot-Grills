@@ -13,6 +13,9 @@ public class GameControllerFinal : MonoBehaviour
     public GameObject camera;
     public Text text;
 
+    //Spatula
+    public GameObject spatula;
+
     public TextMeshProUGUI scoreText;
 
     //Order generator
@@ -72,6 +75,8 @@ public class GameControllerFinal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         //Read the controls file to bind the controls to the players liking
         using(StreamReader sr = new StreamReader(Application.dataPath + "/controls.txt"))
         {
@@ -184,28 +189,20 @@ public class GameControllerFinal : MonoBehaviour
         {
             if(currentView == "grills")
             {
-                //CHANGE BELOW
-                //Check if there are any patties on the grill
-                //Loop through and check which ones are tagged as ready to flip
-                //Flip first patty that is ready to be flipped
-                //Change patty tag from ready2flip to flipped (to avoid repeated flipping)
-
-
-                //Check if there are any patties on the grill and whether the latest one is ready to be flipped
-                //if (grillPatties > 0 && pattiesArr[grillPatties-1].tag == "ready2flip")
-                //{
-                    //Destroy(pattiesArr[grillPatties - 1]);
-                    //pattiesArr[grillPatties - 1] = Instantiate(cookedPatty, pattyPos[grillPatties - 1], Quaternion.identity);
-                    //cooked[grillPatties - 1] = true;
-                //}
 
                 //Loop through all patties on the grill and check if they are ready to flip
                 for(int i = 0; i < pattiesArr.Length; i++)
                 {
                     //Flip the oldest patty that is ready to flip
-                    //if(pattiesArr[i].tag == "ready2flip" && pattiesArr[i] != null)
                     if(pattiesArr[i] != null && pattiesArr[i].tag == "ready2flip")
                     {
+
+                        //Spawn spatula
+                        var spat = Instantiate(spatula, new Vector3(pattyPos[i].x + 1.3f, pattyPos[i].y - 15.5f, 20f), Quaternion.identity);
+
+                        //Wait a second and then destroy game object to prevent memory leak
+
+
                         Destroy(pattiesArr[i]);
                         pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
                         cooked[i] = true;

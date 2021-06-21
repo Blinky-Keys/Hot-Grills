@@ -38,8 +38,10 @@ public class OrderGenerator : MonoBehaviour
 
         orderContents = new string[50];
 
-        //Generate order every 10 seconds (TODO: make time between orders decrease as time goes on to speed up pace of game)
+        //Generate order every 10 seconds
         //InvokeRepeating("GenerateOrder", 0f, 10f);
+
+        //Start generating orders with 10 seconds betwen them
         StartCoroutine(TimeDecayGenerateOrder(10f));
     }
 
@@ -49,8 +51,11 @@ public class OrderGenerator : MonoBehaviour
 
     }
 
+    //Generate an order and then decrease the time it takes for another one to be generated
     IEnumerator TimeDecayGenerateOrder(float time)
     {
+        GenerateOrder();
+
         yield return new WaitForSeconds(time);
         while(true)
         {
@@ -59,11 +64,11 @@ public class OrderGenerator : MonoBehaviour
             {
                 if(time > 5)
                 {
-                    time -= 0.5f;
+                    time -= 0.25f;
                 }
                 else
                 {
-                    time -= 0.25f;
+                    time -= 0.15f;
                 }
             }
             Debug.Log("Current interval: " + time);

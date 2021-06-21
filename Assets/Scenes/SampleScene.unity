@@ -1513,6 +1513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 519420028}
   text: {fileID: 14650396}
+  spatula: {fileID: 6367269787472304740, guid: ac4e12a5461c03949a86d181d2ec456a, type: 3}
   scoreText: {fileID: 1158986328}
   og: {fileID: 620182538}
   patty: {fileID: 7940415526024101953, guid: 4c4dddcecac0ea242bdc5d5342b662a3, type: 3}
