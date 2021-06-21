@@ -32,13 +32,13 @@ public class OrderGenerator : MonoBehaviour
             "sauce"
         };
 
-        //Arbitrarily set array size to 50 because who's gonna have 50 orders waiting lol
+        //Arbitrarily set array size to 50 because who's gonna have 50 orders waiting lol (game will end before that happens anyway)
         orderTickets = new GameObject[50];
         pendingOrders = 0;
 
         orderContents = new string[50];
 
-        //Generate order every 10 seconds
+        //Generate order every 10 seconds (TODO: make time between orders decrease as time goes on to speed up pace of game)
         InvokeRepeating("GenerateOrder", 0f, 10f);
     }
 
@@ -62,10 +62,14 @@ public class OrderGenerator : MonoBehaviour
 
         orderContents[numItemsInArray(orderContents)] = order;
 
-        orderTickets[numItemsInArray(orderContents)] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+10f, 3.45f, 0), Quaternion.identity);
+        //Spawn a new order ticket
+        orderTickets[numItemsInArray(orderContents)] = Instantiate(ticket, new Vector3((-pendingOrders*2.5f)+36.5f, 3.45f, 0), Quaternion.identity);
+
+        //Place the correct order text on the ticket
         orderTickets[numItemsInArray(orderContents)].GetComponent<OrderController>().UpdateText(order);
 
 
+        //DEBUGGING OUTPUT
         Debug.Log(orderContents[0]);
         //Debug.Log(pendingOrders);
 
@@ -91,6 +95,7 @@ public class OrderGenerator : MonoBehaviour
         }
     }
 
+    //When the player serves a burger, check that it has been made correctly according to the first ticket in the queue
     public bool CheckOrder(GameObject[] burgerArr)
     {
         string[] orderCheck = orderContents[0].Split(' ');

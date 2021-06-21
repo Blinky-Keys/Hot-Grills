@@ -25,7 +25,7 @@ public class GameControllerFinal : MonoBehaviour
     string currentView = "grills";
 
     //Camera positions for the two different views
-    Vector3 grills = new Vector3(0f, -0.52f, -10f);
+    Vector3 grills = new Vector3(0.06f, -12.75f, -10f);
     Vector3 stacking = new Vector3(25.24f, -0.52f, -10f);
 
     //Patties on the grill
@@ -100,6 +100,12 @@ public class GameControllerFinal : MonoBehaviour
             new Vector2(-2, -2),
             new Vector2(-2, -4)
         };
+
+        //Quick fix (REWRITE POSITIONS IN ARRAY LATER)
+        for(int i = 0; i < pattyPos.Length; i++)
+        {
+            pattyPos[i].y -= 12f;
+        }
 
         //Positions in 2D space where buns will be rendered
         bunPos = new Vector2[]

@@ -233,9 +233,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15150}
     - Class: 114
-      Script: {instanceID: 20356}
+      Script: {instanceID: 16474}
     - Class: 114
-      Script: {instanceID: 20372}
+      Script: {instanceID: 16534}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1010,4 +1010,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/Stable/Hot Grills.exe
+  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/20-06-21/Hot Grills.exe
