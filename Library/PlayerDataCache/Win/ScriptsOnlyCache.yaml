@@ -29,6 +29,14 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -188,11 +196,17 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -233,9 +247,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15150}
     - Class: 114
-      Script: {instanceID: 16474}
+      Script: {instanceID: 15716}
     - Class: 114
-      Script: {instanceID: 16534}
+      Script: {instanceID: 15786}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -407,7 +421,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: f45bf4092b0d4649f89d6ff85fe24e48
+      Hash: 98111f3206824b872c99442f7b4084b3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControllerFinal
@@ -1010,4 +1024,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/20-06-21/Hot Grills.exe
+  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/21-06-21/Hot Grills.exe

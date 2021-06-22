@@ -42,6 +42,10 @@ public class GameControllerFinal : MonoBehaviour
     //Cooked patties
     int cookedPatties = 0;
 
+    //Variables used for calculating score multipliers
+    float timeSinceServe;
+    int multiplier;
+
     //Burgers being assembled
     Vector2[] bunPos;
     GameObject[][] burgers;
@@ -75,7 +79,8 @@ public class GameControllerFinal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        multiplier = 1;
+        timeSinceServe = 0f;
 
         //Read the controls file to bind the controls to the players liking
         using(StreamReader sr = new StreamReader(Application.dataPath + "/controls.txt"))
@@ -200,10 +205,13 @@ public class GameControllerFinal : MonoBehaviour
                         //Spawn spatula
                         var spat = Instantiate(spatula, new Vector3(pattyPos[i].x + 1.3f, pattyPos[i].y - 15.5f, 20f), Quaternion.identity);
 
-                        //Wait a second and then destroy game object to prevent memory leak
+                        //Wait a second and then destroy spatula game object to prevent memory leak by accumulation of unused objects
 
 
+                        //Remove uncooked patty game object
                         Destroy(pattiesArr[i]);
+
+                        //Spawn cooked patty game object
                         pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
                         cooked[i] = true;
                         break;
@@ -358,8 +366,30 @@ public class GameControllerFinal : MonoBehaviour
                         ServeBurger(burgers[i]);
                         og.GetComponent<OrderGenerator>().UpdateOrders();
 
+
+                        //If a burger has been served before, check how long it has been since then
+                        if (timeSinceServe == 0)
+                        {
+                            timeSinceServe = Time.time;
+                        }
+
+                        if(timeSinceServe > 0)
+                        {
+                            float timeTemp = Time.time;
+                            if(timeTemp - timeSinceServe < 2)
+                            {
+                                multiplier++;
+                            }
+                            else
+                            {
+                                multiplier = 1;
+                                timeSinceServe = Time.time;
+                            }
+                        }
+
+
                         //Increase player score
-                        score += 100;
+                        score += 100 * multiplier;
 
                         //Play increase score sound
 
@@ -368,6 +398,9 @@ public class GameControllerFinal : MonoBehaviour
                     {
                         //Decrease player score
                         score -= 50;
+
+                        //Reset score multiplier
+                        multiplier = 1;
 
                         //Play penalty sound
 
@@ -378,8 +411,16 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
+        Debug.Log("Current multiplier: " + multiplier);
+
         //Update the score UI
         UpdateScore();
+    }
+
+    //Calculate score multiplier
+    int calculateMulti()
+    {
+        return 0;
     }
 
     //Function for changing the position of the camera
@@ -432,6 +473,7 @@ public class GameControllerFinal : MonoBehaviour
         {
             StartCoroutine(ExecuteAfterTime(2, burger[i]));
         }
+
     }
 
     IEnumerator ExecuteAfterTime(float time, GameObject go)
