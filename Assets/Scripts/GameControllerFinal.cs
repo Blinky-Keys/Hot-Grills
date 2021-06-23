@@ -46,6 +46,8 @@ public class GameControllerFinal : MonoBehaviour
     float timeSinceServe;
     int multiplier;
 
+    public TextMeshProUGUI multiText;
+
     //Burgers being assembled
     Vector2[] bunPos;
     GameObject[][] burgers;
@@ -376,6 +378,9 @@ public class GameControllerFinal : MonoBehaviour
                         if(timeSinceServe > 0)
                         {
                             float timeTemp = Time.time;
+
+                            StartCoroutine(CheckMulti());
+
                             if(timeTemp - timeSinceServe < 2)
                             {
                                 multiplier++;
@@ -385,6 +390,7 @@ public class GameControllerFinal : MonoBehaviour
                                 multiplier = 1;
                                 timeSinceServe = Time.time;
                             }
+                            UpdateMulti(multiplier);
                         }
 
 
@@ -416,9 +422,14 @@ public class GameControllerFinal : MonoBehaviour
     }
 
     //Calculate score multiplier
-    void calculateMulti()
+    void CalculateMulti()
     {
         
+    }
+
+    void UpdateMulti(int multi)
+    {
+        multiText.text = "x" + multi.ToString();
     }
 
     //Function for changing the position of the camera
@@ -504,6 +515,17 @@ public class GameControllerFinal : MonoBehaviour
 
         //Load the game over screen
         SceneManager.LoadScene("GameOver");
+    }
+
+    IEnumerator CheckMulti()
+    {
+        yield return new WaitForSeconds(2f);
+        if(Time.time - timeSinceServe > 2)
+        {
+            multiplier = 1;
+            UpdateMulti(multiplier);
+        }
+
     }
 
     void UpdateText()
