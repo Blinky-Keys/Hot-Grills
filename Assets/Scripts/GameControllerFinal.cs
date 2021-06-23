@@ -206,7 +206,7 @@ public class GameControllerFinal : MonoBehaviour
                         var spat = Instantiate(spatula, new Vector3(pattyPos[i].x + 1.3f, pattyPos[i].y - 15.5f, 20f), Quaternion.identity);
 
                         //Wait a second and then destroy spatula game object to prevent memory leak by accumulation of unused objects
-
+                        StartCoroutine(RemoveSpatulaObj(spat));
 
                         //Remove uncooked patty game object
                         Destroy(pattiesArr[i]);
@@ -411,16 +411,14 @@ public class GameControllerFinal : MonoBehaviour
             }
         }
 
-        Debug.Log("Current multiplier: " + multiplier);
-
         //Update the score UI
         UpdateScore();
     }
 
     //Calculate score multiplier
-    int calculateMulti()
+    void calculateMulti()
     {
-        return 0;
+        
     }
 
     //Function for changing the position of the camera
@@ -485,6 +483,13 @@ public class GameControllerFinal : MonoBehaviour
 
         //Play bell sound to signify order being taken
 
+    }
+
+    //Remove spatula objects that are no longer visible
+    IEnumerator RemoveSpatulaObj(GameObject spat)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(spat);
     }
 
     IEnumerator WaitForGameOver(float time)
