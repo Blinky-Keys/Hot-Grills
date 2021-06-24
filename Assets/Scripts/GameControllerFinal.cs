@@ -151,7 +151,8 @@ public class GameControllerFinal : MonoBehaviour
         //Check whether or not the player has too many orders still pending
         if(og.GetComponent<OrderGenerator>().GetPendingOrders() > 10)
         {
-            //Play some sort of sound
+            //Play some sort of failure sound
+
 
             //Show gameover screen (after some time?)
             StartCoroutine(WaitForGameOver(2f));
@@ -163,10 +164,12 @@ public class GameControllerFinal : MonoBehaviour
         {
             if(currentView == "grills")
             {
+                //If the grill is full, do nothing
                 if (grillPatties >= 9)
                 {
                     return;
                 }
+                //Find the next available spot on the grill and place a patty there
                 for(int i = 0; i < pattiesArr.Length; i++)
                 {
                     if(pattiesArr[i] == null)
@@ -191,7 +194,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     }
                 }
-            }  
+            }
         }
 
         //Player presses F key
@@ -232,6 +235,7 @@ public class GameControllerFinal : MonoBehaviour
             }
             else if(currentView == "stacking")
             {
+                //If there is a bottom bun, and there is no top bun, place down sauce
                 for(int i = 0; i < burgers.Length; i++)
                 {
                     if(burgers[i][0] != null && burgers[i][5] == null)
@@ -246,15 +250,7 @@ public class GameControllerFinal : MonoBehaviour
         //Player presses M key
         if(Input.GetKeyDown(KeyCode.M))
         {
-            //if(grillPatties > 0 && cooked[grillPatties-1])
-            //{
-                //Move patty off the grill
-                //Destroy(pattiesArr[grillPatties - 1]);
-                //cooked[grillPatties - 1] = false;
-                //grillPatties--;
-                //cookedPatties++;
-            //}
-
+            //Find the next cooked patty, and remove it from the grill
             for(int i = 0; i < cooked.Length; i++)
             {
                 if(cooked[i] && pattiesArr[i] != null)
@@ -379,12 +375,13 @@ public class GameControllerFinal : MonoBehaviour
                         og.GetComponent<OrderGenerator>().UpdateOrders();
 
 
-                        //If a burger has been served before, check how long it has been since then
+                        //Check if a burger has been served before
                         if (timeSinceServe == 0)
                         {
                             timeSinceServe = Time.time;
                         }
 
+                        //If a burger has been served before, check the time since then and calculate multiplier accordingly
                         if(timeSinceServe > 0)
                         {
                             float timeTemp = Time.time;
@@ -660,11 +657,11 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "cheese(Clone)":
                         //Adjust offset
-                        offset = 0.05f;
+                        offset = -0.2f;
                         break;
                     case "bun(Clone)":
                         //Adjust offset
-
+                        offset = 0;
                         break;
                 }
                 break;
@@ -730,7 +727,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "bun(Clone)":
                         //Adjust offset
-
+                        offset = 0.2f;
                         break;
                 }
                 break;

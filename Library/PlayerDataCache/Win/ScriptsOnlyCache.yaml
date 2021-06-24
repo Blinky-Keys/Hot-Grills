@@ -32,10 +32,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -247,9 +245,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15150}
     - Class: 114
-      Script: {instanceID: 15716}
+      Script: {instanceID: 15742}
     - Class: 114
-      Script: {instanceID: 15786}
+      Script: {instanceID: 15816}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -421,7 +419,7 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 98111f3206824b872c99442f7b4084b3
+      Hash: 32fe3100d89db59c3fb897f907ddef5b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControllerFinal
@@ -1024,4 +1022,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/21-06-21/Hot Grills.exe
+  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/24-06-21/Hot Grills.exe
