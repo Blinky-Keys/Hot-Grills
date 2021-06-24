@@ -16,6 +16,9 @@ public class GameControllerFinal : MonoBehaviour
     //Spatula
     public GameObject spatula;
 
+    //Flipping patty object
+    public GameObject pattyFlip;
+
     public TextMeshProUGUI scoreText;
 
     //Order generator
@@ -207,14 +210,21 @@ public class GameControllerFinal : MonoBehaviour
                         //Spawn spatula
                         var spat = Instantiate(spatula, new Vector3(pattyPos[i].x + 1.3f, pattyPos[i].y - 15.5f, 20f), Quaternion.identity);
 
-                        //Wait a second and then destroy spatula game object to prevent memory leak by accumulation of unused objects
+                        //Spawn animated flipping patty
+                        var flipPatty = Instantiate(pattyFlip, new Vector3(pattyPos[i].x - 1f, pattyPos[i].y + 1.3f, -140f), Quaternion.identity);
+
+                        //Remove animated flipping patty after animation has finished
+                        StartCoroutine(ExecuteAfterTime(0.5f, flipPatty));
+
+                        //Wait a second and then destroy spatula game object to prevent accumulation of unused objects
                         StartCoroutine(RemoveSpatulaObj(spat));
 
                         //Remove uncooked patty game object
                         Destroy(pattiesArr[i]);
 
                         //Spawn cooked patty game object
-                        pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
+                        //pattiesArr[i] = Instantiate(cookedPatty, pattyPos[i], Quaternion.identity);
+                        StartCoroutine(SpawnAfterTime(0.5f, cookedPatty, i));
                         cooked[i] = true;
                         break;
                     }
@@ -247,7 +257,7 @@ public class GameControllerFinal : MonoBehaviour
 
             for(int i = 0; i < cooked.Length; i++)
             {
-                if(cooked[i])
+                if(cooked[i] && pattiesArr[i] != null)
                 {
                     Destroy(pattiesArr[i]);
                     cooked[i] = false;
@@ -483,6 +493,12 @@ public class GameControllerFinal : MonoBehaviour
             StartCoroutine(ExecuteAfterTime(2, burger[i]));
         }
 
+    }
+
+    IEnumerator SpawnAfterTime(float time, GameObject go, int index)
+    {
+        yield return new WaitForSeconds(time);
+        pattiesArr[index] = Instantiate(go, pattyPos[index], Quaternion.identity);
     }
 
     IEnumerator ExecuteAfterTime(float time, GameObject go)

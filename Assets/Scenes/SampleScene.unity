@@ -1782,8 +1782,10 @@ MonoBehaviour:
   camera: {fileID: 519420028}
   text: {fileID: 14650396}
   spatula: {fileID: 6367269787472304740, guid: ac4e12a5461c03949a86d181d2ec456a, type: 3}
+  pattyFlip: {fileID: 5641924220031291570, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
   scoreText: {fileID: 1158986328}
   og: {fileID: 620182538}
+  multiText: {fileID: 246417246}
   patty: {fileID: 7940415526024101953, guid: 4c4dddcecac0ea242bdc5d5342b662a3, type: 3}
   cookedPatty: {fileID: 5824329286544619945, guid: 3732b49ebcdafda44ae6d8b1553981c1, type: 3}
   bun: {fileID: 1060922845263278054, guid: 9331c9dac4085aa45932dccb37b9e46a, type: 3}
@@ -2213,3 +2215,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899164172}
   m_CullTransparentMesh: 0
+--- !u!1001 &2576853703760308614
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.13389967
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -13.067177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -137.03851
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975202790781732075, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641924220031291570, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_Name
+      value: AnimatedFlippingPatty
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641924220031291570, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e4f349e3cd740145b9b66b716afc965, type: 3}
