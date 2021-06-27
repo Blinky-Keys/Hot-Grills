@@ -50,7 +50,7 @@ public class ScreenManager : MonoBehaviour
         UnityWebRequest www = UnityWebRequest.Post("https://nathan-ellison.com/pages/add.php", form);
         yield return www.SendWebRequest();
 
-        //Check the result
+        //Check the result, and log the error if there is one
         if(www.result != UnityWebRequest.Result.Success)
         {
             Debug.Log(www.error);
