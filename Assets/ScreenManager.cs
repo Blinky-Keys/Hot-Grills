@@ -16,6 +16,7 @@ public class ScreenManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Read the player's final score from the score text file
         line = "";
         using(StreamReader sr = new StreamReader(Application.dataPath + "/score.txt"))
         {
@@ -23,11 +24,6 @@ public class ScreenManager : MonoBehaviour
         }
 
         scoreText.text = "Final score: " + line;
-
-        //Upload score to server
-        //StartCoroutine(UploadScore(line));
-
-        //UploadScore();
 
         File.Delete(Application.dataPath + "/score.txt");
 
@@ -39,12 +35,15 @@ public class ScreenManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    //Called by pressing the main menu button
     public void UploadScoreAndName()
     {
+        //Get the name of the player from the text input box
         string playerName = "";
         GameObject nameBox = GameObject.Find("NameBox");
         playerName = nameBox.transform.Find("Text Area").transform.Find("Text").GetComponent<TextMeshProUGUI>().text;
 
+        //Begin upload
         StartCoroutine(UploadScore(line, playerName));
     }
 
@@ -54,6 +53,7 @@ public class ScreenManager : MonoBehaviour
         WWWForm form = new WWWForm();
 
         //Add the data
+        //If the player did not enter a name, mark their name as "Anon", otherwise add their custom name
         if (playerName.Length <= 1)
         {
             form.AddField("name", "Anon");
@@ -63,10 +63,10 @@ public class ScreenManager : MonoBehaviour
             Debug.Log(playerName.Length);
             form.AddField("name", playerName);
         }
-        //MUST BE 4 CHARACTERS OR LESS OTHERWISE DATABASE WILL REJECT THE SCORE
-        //form.AddField("name", "yyyy");
+        //PLAYER NAME MUST BE 4 CHARACTERS OR LESS OTHERWISE DATABASE WILL REJECT THE SCORE
         form.AddField("score", int.Parse(scoreText));
 
+        //Debugging output
         Debug.Log(playerName);
         Debug.Log(int.Parse(scoreText));
 
