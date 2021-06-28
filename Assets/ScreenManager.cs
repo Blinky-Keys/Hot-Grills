@@ -10,11 +10,13 @@ public class ScreenManager : MonoBehaviour
 {
     private int score;
     public TextMeshProUGUI scoreText;
+    string line;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        string line = "";
+        line = "";
         using(StreamReader sr = new StreamReader(Application.dataPath + "/score.txt"))
         {
             line = sr.ReadLine();
@@ -23,7 +25,9 @@ public class ScreenManager : MonoBehaviour
         scoreText.text = "Final score: " + line;
 
         //Upload score to server
-        StartCoroutine(UploadScore(line));
+        //StartCoroutine(UploadScore(line));
+
+        //UploadScore();
 
         File.Delete(Application.dataPath + "/score.txt");
 
@@ -35,16 +39,36 @@ public class ScreenManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    IEnumerator UploadScore(string line)
+    public void UploadScoreAndName()
+    {
+        string playerName = "";
+        GameObject nameBox = GameObject.Find("NameBox");
+        playerName = nameBox.transform.Find("Text Area").transform.Find("Text").GetComponent<TextMeshProUGUI>().text;
+
+        StartCoroutine(UploadScore(line, playerName));
+    }
+
+    IEnumerator UploadScore(string scoreText, string playerName)
     {
         //Create new form to send data in
         WWWForm form = new WWWForm();
 
         //Add the data
-        form.AddField("name", "test");
-        form.AddField("score", int.Parse(line));
+        if (playerName.Length <= 1)
+        {
+            form.AddField("name", "Anon");
+        }
+        else
+        {
+            Debug.Log(playerName.Length);
+            form.AddField("name", playerName);
+        }
+        //MUST BE 4 CHARACTERS OR LESS OTHERWISE DATABASE WILL REJECT THE SCORE
+        //form.AddField("name", "yyyy");
+        form.AddField("score", int.Parse(scoreText));
 
-        Debug.Log(int.Parse(line));
+        Debug.Log(playerName);
+        Debug.Log(int.Parse(scoreText));
 
         //Select destination and send data
         UnityWebRequest www = UnityWebRequest.Post("https://nathan-ellison.com/pages/add.php", form);
