@@ -6,6 +6,8 @@ using System.IO;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject clickSound;
+
     private void Start()
     {
         //Write the default controls to the contols file
@@ -31,5 +33,10 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    public void PlayClick()
+    {
+        clickSound.GetComponent<AudioSource>().Play();
     }
 }

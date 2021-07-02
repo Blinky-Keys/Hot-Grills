@@ -30,6 +30,11 @@ public class GameControllerFinal : MonoBehaviour
     //View that the player is currently seeing
     string currentView = "grills";
 
+    //Sound objects
+    public GameObject slapSound;
+    public GameObject bellSound;
+    public GameObject sizzleSound;
+
     //Camera positions for the two different views
     Vector3 grills = new Vector3(0.06f, -12.75f, -10f);
     Vector3 stacking = new Vector3(25.24f, -0.52f, -10f);
@@ -149,7 +154,7 @@ public class GameControllerFinal : MonoBehaviour
     void Update()
     {
         //Check whether or not the player has too many orders still pending
-        if(og.GetComponent<OrderGenerator>().GetPendingOrders() > 1)
+        if(og.GetComponent<OrderGenerator>().GetPendingOrders() > 10)
         {
             //Play some sort of failure sound
 
@@ -174,6 +179,9 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     if(pattiesArr[i] == null)
                     {
+                        //Play sizzle sound
+                        sizzleSound.SetActive(true);
+
                         pattiesArr[i] = Instantiate(patty, pattyPos[i], Quaternion.identity);
                         break;
                     }
@@ -187,7 +195,8 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     //Check that there is a bottom bun, no top bun, and there are cooked patties available
                     if (burgers[i][0] != null && burgers[i][5] == null && cookedPatties > 0)
-                    {
+                    {   
+                        //Spawn asset and update associated data
                         PlaceIngredient(burgers[i], patty_side);
                         cookedPatties--;
                         UpdateText();
@@ -240,6 +249,7 @@ public class GameControllerFinal : MonoBehaviour
                 {
                     if(burgers[i][0] != null && burgers[i][5] == null)
                     {
+                        //Spawn ingredient
                         PlaceIngredient(burgers[i], sauce);
                         break;
                     }
@@ -263,6 +273,11 @@ public class GameControllerFinal : MonoBehaviour
                     break;
                 }
             }
+
+            if(grillPatties == 0)
+            {
+                sizzleSound.SetActive(false);
+            }
         }
 
         //Player presses B key
@@ -273,6 +288,10 @@ public class GameControllerFinal : MonoBehaviour
             {
                 if(burgers[i][0] == null)
                 {
+                    //Play sound
+                    PlaySound(slapSound);
+
+                    //Spawn ingredient
                     burgers[i][0] = Instantiate(bun, bunPos[i], Quaternion.identity);
                     break;
                 }
@@ -304,6 +323,7 @@ public class GameControllerFinal : MonoBehaviour
                     //Check that there is a bottom bun
                     if (burgers[i][0] != null && burgers[i][5] == null)
                     {
+                        //Spawn ingredient
                         PlaceIngredient(burgers[i], salad);
                         break;
                     }
@@ -462,6 +482,9 @@ public class GameControllerFinal : MonoBehaviour
         {
             if(burgerArr[i] == null)
             {
+                //Play sound effect
+                PlaySound(slapSound);
+
                 //Change the offset to place ingredient at the correct height
                 UpdateOffset(ingredient, burgerArr[i - 1]);
                 burgerArr[i] = Instantiate(ingredient, new Vector2(burgerArr[0].transform.position.x, burgerArr[i-1].transform.position.y + offset), Quaternion.identity);
@@ -483,6 +506,9 @@ public class GameControllerFinal : MonoBehaviour
             temp.y += 4.6f;
             burger[i].transform.position = temp;
         }
+
+        //Play bell sound
+        bellSound.GetComponent<AudioSource>().Play();
 
         //After delay, destroy all game objects to simulate burger being taken (using a coroutine)
         for(int i = 0; i < burger.Length; i++)
@@ -551,6 +577,11 @@ public class GameControllerFinal : MonoBehaviour
     {
         //Change the UI to reflect playeres current score
         scoreText.text = "Score: " + score;
+    }
+
+    void PlaySound(GameObject sound)
+    {
+        sound.GetComponent<AudioSource>().Play();
     }
 
     KeyCode ReadKeyCode(StreamReader sr)
