@@ -534,8 +534,6 @@ public class GameControllerFinal : MonoBehaviour
         //Destroy gameobjects making up the burger
         Destroy(go);
 
-        //Play bell sound to signify order being taken
-
     }
 
     //Remove spatula objects that are no longer visible
