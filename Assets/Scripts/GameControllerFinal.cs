@@ -89,6 +89,9 @@ public class GameControllerFinal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //To ensure the controls overlay will show when the game first starts, set this variable to false
+        PauseMenu.GameIsPaused = false;
+
         multiplier = 1;
         timeSinceServe = 0f;
 
@@ -725,7 +728,7 @@ public class GameControllerFinal : MonoBehaviour
                         break;
                     case "bun(Clone)":
                         //Adjust offset
-
+                        offset = 0.1f;
                         break;
                 }
                 break;
