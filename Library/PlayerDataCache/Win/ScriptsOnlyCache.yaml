@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - MainMenu
     - OrderController
     - OrderGenerator
+    - OverlayMenu
     - Patty
     - PauseMenu
     - ScreenManager
@@ -72,6 +73,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -81,25 +86,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12180}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 12342}
     - Class: 114
-      Script: {instanceID: 12488}
+      Script: {instanceID: 12490}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12842}
     - Class: 114
-      Script: {instanceID: 13008}
+      Script: {instanceID: 13010}
     - Class: 114
-      Script: {instanceID: 13638}
+      Script: {instanceID: 13640}
     - Class: 114
-      Script: {instanceID: 14018}
+      Script: {instanceID: 14020}
     - Class: 114
-      Script: {instanceID: 14376}
+      Script: {instanceID: 14378}
     - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 14484}
     - Class: 114
-      Script: {instanceID: 14974}
+      Script: {instanceID: 14976}
     - Class: 114
-      Script: {instanceID: 15150}
+      Script: {instanceID: 15152}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -152,35 +157,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12654}
+      Script: {instanceID: 12262}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12656}
     - Class: 114
-      Script: {instanceID: 12900}
+      Script: {instanceID: 12842}
     - Class: 114
-      Script: {instanceID: 13238}
+      Script: {instanceID: 12902}
     - Class: 114
-      Script: {instanceID: 13638}
+      Script: {instanceID: 13240}
     - Class: 114
-      Script: {instanceID: 14018}
+      Script: {instanceID: 13640}
     - Class: 114
-      Script: {instanceID: 14040}
+      Script: {instanceID: 14020}
     - Class: 114
-      Script: {instanceID: 14376}
+      Script: {instanceID: 14042}
     - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 14378}
     - Class: 114
-      Script: {instanceID: 14792}
+      Script: {instanceID: 14484}
     - Class: 114
-      Script: {instanceID: 14974}
+      Script: {instanceID: 14794}
     - Class: 114
-      Script: {instanceID: 15150}
+      Script: {instanceID: 14976}
     - Class: 114
-      Script: {instanceID: 15186}
+      Script: {instanceID: 15152}
     - Class: 114
-      Script: {instanceID: 15198}
+      Script: {instanceID: 15188}
     - Class: 114
-      Script: {instanceID: 29406}
+      Script: {instanceID: 15200}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -233,37 +238,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12390}
+      Script: {instanceID: 12392}
     - Class: 114
-      Script: {instanceID: 12706}
+      Script: {instanceID: 12708}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12842}
     - Class: 114
-      Script: {instanceID: 13060}
+      Script: {instanceID: 13062}
     - Class: 114
-      Script: {instanceID: 13286}
+      Script: {instanceID: 13288}
     - Class: 114
-      Script: {instanceID: 13638}
+      Script: {instanceID: 13640}
     - Class: 114
-      Script: {instanceID: 13976}
+      Script: {instanceID: 13978}
     - Class: 114
-      Script: {instanceID: 14018}
+      Script: {instanceID: 14020}
     - Class: 114
-      Script: {instanceID: 14376}
-    - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 14378}
     - Class: 114
       Script: {instanceID: 14484}
     - Class: 114
-      Script: {instanceID: 14684}
+      Script: {instanceID: 14486}
     - Class: 114
-      Script: {instanceID: 14938}
+      Script: {instanceID: 14686}
     - Class: 114
-      Script: {instanceID: 15150}
+      Script: {instanceID: 14940}
     - Class: 114
-      Script: {instanceID: 15742}
+      Script: {instanceID: 15152}
     - Class: 114
-      Script: {instanceID: 15816}
+      Script: {instanceID: 16110}
+    - Class: 114
+      Script: {instanceID: 16174}
+    - Class: 114
+      Script: {instanceID: 19876}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -403,6 +410,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 2a31bc5235c64eca7b246382265da8c8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: sounds
   - hash:
       serializedVersion: 2
       Hash: 523ce309f50d9eee6a8fc0e2f86c9c97
@@ -903,7 +916,7 @@ ScriptsOnlyBuild:
     className: TMPro_InstructionOverlay
   - hash:
       serializedVersion: 2
-      Hash: c396a30fc040a37e5d4033e6e0c892d6
+      Hash: 0b364a7fa293ca748ce46e7cfa0e407a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OrderGenerator
@@ -1035,13 +1048,13 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 2a31bc5235c64eca7b246382265da8c8
+      Hash: 673dd997302fa1e1eaf1d6a13911a470
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: sounds
+    className: OverlayMenu
   platform: 5
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameOver.unity
-  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/2-7-21/Hot Grills.exe
+  playerPath: C:/Users/Nathan Ellison/Desktop/Builds/sound-test/Hot Grills.exe

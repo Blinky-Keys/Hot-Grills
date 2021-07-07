@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class OrderGenerator : MonoBehaviour
 {
-    public string difficulty = "easy";
-
     //Array containing all available ingredients
     private string[] ingredients;
 
@@ -17,6 +15,8 @@ public class OrderGenerator : MonoBehaviour
     private GameObject[] orderTickets;
     private string[] orderContents;
     private int pendingOrders;
+
+    public GameObject wrongSound;
 
     // Start is called before the first frame update
     void Start()
@@ -133,6 +133,10 @@ public class OrderGenerator : MonoBehaviour
             if(!burgerArr[i].name.ToLower().Contains(orderCheck[i-1]))
             {
                 Debug.Log("burger UNCLEAN");
+
+                //Play sound to signify wrong burger
+                wrongSound.GetComponent<AudioSource>().Play();
+
                 return false;
             }
         }
