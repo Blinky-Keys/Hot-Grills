@@ -25,8 +25,10 @@ M - Move patty off grill
 Space - Add top bun  
 Backspace - Clear counter  
 
+![controls screen](Screenshots/controls.png)
+
 The controls are also reconfigurable on the controls screen. 
 
-![controls screen](Screenshots/controls.png)
+![adjust controls screen](Screenshots/adjust_controls_screen.png)
 
 *Any feedback is appreciated. How you get it to me is up to you.*
